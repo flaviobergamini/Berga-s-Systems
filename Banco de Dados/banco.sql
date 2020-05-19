@@ -14,22 +14,24 @@ create table contas_a_pagar(
     fornecedor varchar(45) not null,
     contas_a_pagar float not null,
     contas_pagas float not null,
-    data date not null,
-    fk_idfluxo int not null,
+    data varchar(45) not null,
+    fk_idfluxo int,
     constraint fk1 
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
 );
+SELECT * FROM contas_a_pagar;
 
 create table contas_a_receber(
 	ID int not null auto_increment primary key,
     cliente varchar(45) not null,
     contas_a_receber float not null,
     contas_recebidas float not null,
-    data date not null,
-    fk_idfluxo int not null,
+    data varchar(45) not null,
+    fk_idfluxo int,
     constraint fk2 
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
 );
+SELECT * FROM contas_a_receber;
 
 create table relatorio(
 	ID int not null auto_increment primary key,
@@ -37,7 +39,7 @@ create table relatorio(
     debito float not null,
     nome varchar(45) not null,
     data date not null,
-    fk_idfluxo int not null,
+    fk_idfluxo int,
     constraint fk3 
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID)
 );
@@ -46,7 +48,7 @@ create table gestao_de_custo(
 	ID int not null auto_increment primary key,
     nome varchar(45) not null,
     valor float not null,
-    fk_idfluxo int not null,
+    fk_idfluxo int,
     constraint fk4
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
 );
@@ -56,7 +58,7 @@ create table extrato(
     nome varchar(45) not null,
     valor_de_entrada float not null,
     valor_de_saida float not null,
-    fk_idfluxo int not null,
+    fk_idfluxo int,
     constraint fk5
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
 );
