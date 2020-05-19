@@ -17,4 +17,12 @@ public class GestaoCusto {
         this.nome = nome;
         this.valor = valor;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getValor() {
+        return valor;
+    }
 }

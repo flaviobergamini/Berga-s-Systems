@@ -24,4 +24,22 @@ public class Relatorio {
         this.debito = debito;
         this.data = dataUp.toString();
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getDebito() {
+        return debito;
+    }
+
+    public float getCredito() {
+        return credito;
+    }
+
+    public String getData() {
+        return data;
+    }
+    
+    
 }

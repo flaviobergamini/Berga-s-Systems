@@ -19,4 +19,18 @@ public class ExtratoBancario {
         this.entrada = entrada;
         this.saida = saida;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getEntrada() {
+        return entrada;
+    }
+
+    public float getSaida() {
+        return saida;
+    }
+    
+    
 }

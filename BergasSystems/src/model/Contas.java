@@ -16,17 +16,27 @@ public abstract class Contas {
     private int id_cont;
     
     private float valor;
-    private String data;
+    private String datas;
     private String nome;
-    
+    Date data = new Date();
     public Contas(){
         id += 1;
-        Date data = new Date();
-        this.data = data.toString();
+        this.datas = data.toString();
         id_cont = id;
     }
-    
+    public void criaConta(String nome, float valor){
+        this.nome = nome;
+        this.valor = valor;
+    }
     public String getData(){
-        return this.data;
+        return this.datas;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public float getValor(){
+        return this.valor;
     }
 }
