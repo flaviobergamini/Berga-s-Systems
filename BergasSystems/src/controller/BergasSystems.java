@@ -51,6 +51,13 @@ public class BergasSystems {
         bd.deletarExtrato(1);
         bd.deletarGestaoCusto(1);
         bd.deletarRelatorio(1);
+        
+        bd.buscarFluxoDeCaixa();
+        bd.buscarContasAPagar();
+        bd.buscarContasAReceber();
+        bd.buscarExtrato();
+        bd.buscarGestaoDeCusto();
+        bd.buscarRelatorio();
         new Tela1().setVisible(true);
     }
     

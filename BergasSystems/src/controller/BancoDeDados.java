@@ -861,27 +861,27 @@ public class BancoDeDados {
     /**
      * ********************** BUSCAR DADOS ********************************
      */
-    /*
-    public ArrayList<Usuario> buscarUsuariosSemFiltro() 
+    
+    public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() 
     {
-        ArrayList<Usuario> listaDeUsuarios = new ArrayList<>();
+        ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
-        String sql = "SELECT * FROM usuario";
+        String sql = "SELECT * FROM fluxo_de_caixa";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
         try 
         {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            System.out.println("Lista de usuarios: ");
             while(rs.next())
             {
                 //System.out.println(rs.getString("nome"));
-                Usuario usuarioTemp = new Usuario(rs.getString("nome"),rs.getString("cpf"));
-                System.out.println("Nome = "+usuarioTemp.getNome());
-                System.out.println("CPF = "+usuarioTemp.getCpf());
+                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
+                System.out.println("Nome = " + fluxo.getNome());
+                System.out.println("Crédito: " + fluxo.getCredito());
+                System.out.println("Débito: " + fluxo.getDebito());
                 System.out.println("---------------------------------");
-                listaDeUsuarios.add(usuarioTemp);
+                listaDeFluxo.add(fluxo);
             }
             sucesso = true;
         } 
@@ -900,7 +900,211 @@ public class BancoDeDados {
                 System.out.println("Erro = " + ex.getMessage());
             }
         }
-        return listaDeUsuarios;
+        return listaDeFluxo;
     }
-     */
+    
+    public ArrayList<ContasAPagar> buscarContasAPagar() 
+    {
+        ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_pagar";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try 
+        {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while(rs.next())
+            {
+                //System.out.println(rs.getString("nome"));
+                ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"));
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Pagar: " + conta.getContasPagar());
+                System.out.println("Contas Pagas: " + conta.getContasPagas());
+                System.out.println("---------------------------------");
+                listaDeContasAPagar.add(conta);
+            }
+            sucesso = true;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } 
+        finally 
+        {
+            try 
+            {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAPagar;
+    }
+    
+    public ArrayList<ContasAReceber> buscarContasAReceber() 
+    {
+        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_pagar";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try 
+        {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while(rs.next())
+            {
+                //System.out.println(rs.getString("nome"));
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_a_recebidas"));
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Receber: " + conta.getContasReceber());
+                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
+                System.out.println("---------------------------------");
+                listaDeContasAReceber.add(conta);
+            }
+            sucesso = true;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } 
+        finally 
+        {
+            try 
+            {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAReceber;
+    }
+    
+    public ArrayList<Relatorio> buscarRelatorio() 
+    {
+        ArrayList<Relatorio> listaRelatorios = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM relatorio";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try 
+        {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while(rs.next())
+            {
+                //System.out.println(rs.getString("nome"));
+                Relatorio relatorio = new Relatorio(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
+                System.out.println("Nome = " + relatorio.getNome());
+                System.out.println("Crédito: " + relatorio.getCredito());
+                System.out.println("Débito: " + relatorio.getDebito());
+                System.out.println("Data:" + relatorio.getData());
+                System.out.println("---------------------------------");
+                listaRelatorios.add(relatorio);
+            }
+            sucesso = true;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } 
+        finally 
+        {
+            try 
+            {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaRelatorios;
+    }
+    
+    public ArrayList<GestaoCusto> buscarGestaoDeCusto() 
+    {
+        ArrayList<GestaoCusto> listaGestao = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM gestao_de_custo";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try 
+        {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while(rs.next())
+            {
+                //System.out.println(rs.getString("nome"));
+                GestaoCusto gestao = new GestaoCusto(rs.getString("nome"), rs.getFloat("valor"));
+                System.out.println("Nome = " + gestao.getNome());
+                System.out.println("Valor: " + gestao.getValor());
+                System.out.println("---------------------------------");
+                listaGestao.add(gestao);
+            }
+            sucesso = true;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } 
+        finally 
+        {
+            try 
+            {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaGestao;
+    }
+    
+    public ArrayList<ExtratoBancario> buscarExtrato() 
+    {
+        ArrayList<ExtratoBancario> listaExtrato = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM extrato";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try 
+        {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while(rs.next())
+            {
+                //System.out.println(rs.getString("nome"));
+                ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"), rs.getFloat("valor_de_saida"));
+                System.out.println("Nome = " + extrato.getNome());
+                System.out.println("Valor de Entrada: " + extrato.getEntrada());
+                System.out.println("Valor de Saída: " + extrato.getSaida());
+                System.out.println("---------------------------------");
+                listaExtrato.add(extrato);
+            }
+            sucesso = true;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } 
+        finally 
+        {
+            try 
+            {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaExtrato;
+    }
 }

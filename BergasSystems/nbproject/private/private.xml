@@ -6,10 +6,8 @@
             <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/model/ExtratoBancario.java</file>
             <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/view/Tela1.java</file>
             <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/controller/BergasSystems.java</file>
-            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/view/Gestao.java</file>
-            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/model/Contas.java</file>
-            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/view/ContasPagar.java</file>
-            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/view/ContasReceber.java</file>
+            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/controller/BancoDeDados.java</file>
+            <file>file:/C:/Users/fhmbe/Projetos/Berga-s-Systems/BergasSystems/src/model/GestaoCusto.java</file>
         </group>
     </open-files>
 </project-private>
