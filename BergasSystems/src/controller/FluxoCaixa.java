@@ -19,4 +19,17 @@ public class FluxoCaixa {
         this.credito = credito;
         this.debito = debito;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getCredito() {
+        return credito;
+    }
+
+    public float getDebito() {
+        return debito;
+    }
+    
 }
