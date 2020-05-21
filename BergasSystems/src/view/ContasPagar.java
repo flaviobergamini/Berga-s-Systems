@@ -123,7 +123,6 @@ public class ContasPagar extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        // boolean cria = false;
         ContasAPagar cp;
         float pagar = 0;
         String fornecedor = this.txtFornecedor.getText();
@@ -144,7 +143,8 @@ public class ContasPagar extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e + "\nInsira um valor válido");
         }
-
+        this.txtFornecedor.setText("");
+        this.txtContasPagar.setText("");
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

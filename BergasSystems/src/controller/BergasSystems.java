@@ -22,7 +22,7 @@ public class BergasSystems {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        /*
         ContasAPagar conta = new ContasAPagar("Inatel", 3000.00f, 0);
         ContasAReceber contaR = new ContasAReceber("Inatel", 0, 200f);
         ExtratoBancario ex = new ExtratoBancario("Nubank", 10000, 3.5f);
@@ -57,7 +57,7 @@ public class BergasSystems {
         bd.buscarContasAReceber();
         bd.buscarExtrato();
         bd.buscarGestaoDeCusto();
-        bd.buscarRelatorio();
+        bd.buscarRelatorio();                   */
         new Tela1().setVisible(true);
     }
     
