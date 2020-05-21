@@ -18,12 +18,6 @@ public class ContasAPagar extends Contas{
         this.contasPagas = contasPagas;
         this.criaConta(nome, 0);
     }
-    
-    public ContasAPagar(String nome, float contasPagar, float contasPagas, float valor){
-        this.contasPagar = contasPagar;
-        this.contasPagas = contasPagas;
-        this.criaConta(nome, valor);
-    }
 
     public float getContasPagar() {
         return contasPagar;
