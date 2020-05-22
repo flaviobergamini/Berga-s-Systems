@@ -91,7 +91,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean inserirContasAPagar(ContasAPagar novaConta) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -240,7 +240,6 @@ public class BancoDeDados {
     /**
      * ********************** ATUALIZAR DADOS ********************************
      */
-    
     public boolean atualizarfluxo(int id, String nome, float credito, float debito) {
         for (int i = 0; i < 4; i++) {
             if (nome.length() > 0) {
@@ -294,7 +293,7 @@ public class BancoDeDados {
 
                 }
                 credito = -1;
-               // return sucesso;
+                // return sucesso;
             } else if (debito > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -325,7 +324,7 @@ public class BancoDeDados {
         }
         return false;
     }
-    
+
     public boolean atualizarRelatorio(int id, String nome, float credito, float debito) {
         for (int i = 0; i < 4; i++) {
             if (nome.length() > 0) {
@@ -379,7 +378,7 @@ public class BancoDeDados {
 
                 }
                 credito = -1;
-               // return sucesso;
+                // return sucesso;
             } else if (debito > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -410,7 +409,7 @@ public class BancoDeDados {
         }
         return false;
     }
-    
+
     public boolean atualizarContasPagar(int id, String fornecedor, float contasPagar, float contasPagas) {
         for (int i = 0; i < 4; i++) {
             if (fornecedor.length() > 0) {
@@ -464,7 +463,7 @@ public class BancoDeDados {
 
                 }
                 contasPagar = -1;
-               // return sucesso;
+                // return sucesso;
             } else if (contasPagas > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -495,7 +494,7 @@ public class BancoDeDados {
         }
         return false;
     }
-    
+
     public boolean atualizarContasReceber(int id, String cliente, float contasReceber, float contasRecebidas) {
         for (int i = 0; i < 4; i++) {
             if (cliente.length() > 0) {
@@ -523,7 +522,7 @@ public class BancoDeDados {
 
                 }
                 cliente = "";
-               
+
             } else if (contasReceber > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -549,7 +548,7 @@ public class BancoDeDados {
 
                 }
                 contasReceber = -1;
-                
+
             } else if (contasRecebidas > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -579,7 +578,7 @@ public class BancoDeDados {
         }
         return false;
     }
-    
+
     public boolean atualizarExtrato(int id, String nome, float entrada, float saida) {
         for (int i = 0; i < 4; i++) {
             if (nome.length() > 0) {
@@ -607,7 +606,7 @@ public class BancoDeDados {
 
                 }
                 nome = "";
-               
+
             } else if (entrada > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -633,7 +632,7 @@ public class BancoDeDados {
 
                 }
                 entrada = -1;
-                
+
             } else if (saida > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -663,7 +662,7 @@ public class BancoDeDados {
         }
         return false;
     }
-    
+
     public boolean atualizarGestaoCusto(int id, String nome, float valor) {
         for (int i = 0; i < 3; i++) {
             if (nome.length() > 0) {
@@ -691,7 +690,7 @@ public class BancoDeDados {
 
                 }
                 nome = "";
-               
+
             } else if (valor > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -716,12 +715,12 @@ public class BancoDeDados {
                     }
 
                 }
-                valor = -1; 
-            } 
+                valor = -1;
+            }
         }
         return false;
     }
-    
+
     /**
      * ********************** DELETAR REGISTROS ******************************
      */
@@ -747,7 +746,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean deletarContaPagar(int id) {
         connectToDb();
         //Comando em SQL:
@@ -770,7 +769,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean deletarContaReceber(int id) {
         connectToDb();
         //Comando em SQL:
@@ -793,7 +792,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean deletarRelatorio(int id) {
         connectToDb();
         //Comando em SQL:
@@ -816,7 +815,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean deletarGestaoCusto(int id) {
         connectToDb();
         //Comando em SQL:
@@ -839,7 +838,7 @@ public class BancoDeDados {
         }
         return sucesso;
     }
-    
+
     public boolean deletarExtrato(int id) {
         connectToDb();
         //Comando em SQL:
@@ -866,19 +865,16 @@ public class BancoDeDados {
     /**
      * ********************** BUSCAR DADOS ********************************
      */
-    public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() 
-    {
+    public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() {
         ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
         String sql = "SELECT * FROM fluxo_de_caixa";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
                 System.out.println("Nome = " + fluxo.getNome());
@@ -888,16 +884,11 @@ public class BancoDeDados {
                 listaDeFluxo.add(fluxo);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {
@@ -906,19 +897,29 @@ public class BancoDeDados {
         }
         return listaDeFluxo;
     }
-    
-    public float buscaContasAPagarID(int id){
-      connectToDb();
+
+    public float buscaContasAPagarID(int id, int set) {
+        connectToDb();
         //Comando em SQL:
-        String sql = "SELECT * FROM contas_a_pagar WHERE ID="+id;  
+        String sql;
+        if (set == 1) {
+            sql = "SELECT * FROM contas_a_pagar WHERE ID=" + id;
+        } else {
+            sql = "SELECT * FROM contas_a_receber WHERE ID=" + id;
+        }
         float contaP = 0, contaAP;
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             rs.next();
-            contaAP = rs.getFloat("contas_a_pagar"); 
-            contaP = rs.getFloat("contas_pagas");
-            System.out.println("************" + contaAP + "*****" + contaP + "**************");
+            if (set == 1) {
+                contaAP = rs.getFloat("contas_a_pagar");
+                contaP = rs.getFloat("contas_pagas");
+            } else {
+                contaAP = rs.getFloat("contas_a_receber");
+                contaP = rs.getFloat("contas_recebidas");
+            }
+            //System.out.println("************" + contaAP + "*****" + contaP + "**************");
             return contaAP;
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
@@ -933,19 +934,17 @@ public class BancoDeDados {
         }
         return -1;
     }
-    public ArrayList<ContasAPagar> buscarContasAPagar() 
-    {
+
+    public ArrayList<ContasAPagar> buscarContasAPagar() {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
         String sql = "SELECT * FROM contas_a_pagar";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"));
                 conta.setID(rs.getString("ID"));
@@ -957,16 +956,11 @@ public class BancoDeDados {
                 listaDeContasAPagar.add(conta);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {
@@ -975,22 +969,20 @@ public class BancoDeDados {
         }
         return listaDeContasAPagar;
     }
-    
-    public ArrayList<ContasAReceber> buscarContasAReceber() 
-    {
+
+    public ArrayList<ContasAReceber> buscarContasAReceber() {
         ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
-        String sql = "SELECT * FROM contas_a_pagar";
+        String sql = "SELECT * FROM contas_a_receber";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
-                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_a_recebidas"));
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"));
+                conta.setID(rs.getString("ID"));
                 System.out.println("Nome = " + conta.getNome());
                 System.out.println("Contas a Receber: " + conta.getContasReceber());
                 System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
@@ -998,16 +990,11 @@ public class BancoDeDados {
                 listaDeContasAReceber.add(conta);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {
@@ -1016,20 +1003,17 @@ public class BancoDeDados {
         }
         return listaDeContasAReceber;
     }
-    
-    public ArrayList<Relatorio> buscarRelatorio() 
-    {
+
+    public ArrayList<Relatorio> buscarRelatorio() {
         ArrayList<Relatorio> listaRelatorios = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
         String sql = "SELECT * FROM relatorio";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 Relatorio relatorio = new Relatorio(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
                 System.out.println("Nome = " + relatorio.getNome());
@@ -1040,16 +1024,11 @@ public class BancoDeDados {
                 listaRelatorios.add(relatorio);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {
@@ -1058,20 +1037,17 @@ public class BancoDeDados {
         }
         return listaRelatorios;
     }
-    
-    public ArrayList<GestaoCusto> buscarGestaoDeCusto() 
-    {
+
+    public ArrayList<GestaoCusto> buscarGestaoDeCusto() {
         ArrayList<GestaoCusto> listaGestao = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
         String sql = "SELECT * FROM gestao_de_custo";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 GestaoCusto gestao = new GestaoCusto(rs.getString("nome"), rs.getFloat("valor"));
                 System.out.println("Nome = " + gestao.getNome());
@@ -1080,16 +1056,11 @@ public class BancoDeDados {
                 listaGestao.add(gestao);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {
@@ -1098,20 +1069,17 @@ public class BancoDeDados {
         }
         return listaGestao;
     }
-    
-    public ArrayList<ExtratoBancario> buscarExtrato() 
-    {
+
+    public ArrayList<ExtratoBancario> buscarExtrato() {
         ArrayList<ExtratoBancario> listaExtrato = new ArrayList<>();
         connectToDb();
         //Comando em SQL:
         String sql = "SELECT * FROM extrato";
         //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try 
-        {
+        try {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while(rs.next())
-            {
+            while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"), rs.getFloat("valor_de_saida"));
                 System.out.println("Nome = " + extrato.getNome());
@@ -1121,16 +1089,11 @@ public class BancoDeDados {
                 listaExtrato.add(extrato);
             }
             sucesso = true;
-        } 
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
-        } 
-        finally 
-        {
-            try 
-            {
+        } finally {
+            try {
                 con.close();
                 st.close();
             } catch (SQLException ex) {

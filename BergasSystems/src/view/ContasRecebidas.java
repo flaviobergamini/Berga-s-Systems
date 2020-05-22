@@ -6,20 +6,18 @@
 package view;
 
 import controller.BancoDeDados;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.ContasAPagar;
 
 /**
  *
  * @author fhmbe
  */
-public class ContasPagas extends javax.swing.JInternalFrame {
+public class ContasRecebidas extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ContasPagas
+     * Creates new form ContasRecebidas
      */
-    public ContasPagas() {
+    public ContasRecebidas() {
         initComponents();
     }
 
@@ -32,39 +30,18 @@ public class ContasPagas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btnCadastrar = new javax.swing.JButton();
-        txtContaPaga = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
+        txtContaRecebida = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        listContasPagas = new java.awt.List();
-        btnPesquisar = new javax.swing.JButton();
+        listContasRecebida = new java.awt.List();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        jLabel4 = new javax.swing.JLabel();
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,13 +50,20 @@ public class ContasPagas extends javax.swing.JInternalFrame {
             }
         });
 
-        txtContaPaga.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContaPagaActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Conta paga:");
+        txtContaRecebida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContaRecebidaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Conta recebida:");
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,16 +73,7 @@ public class ContasPagas extends javax.swing.JInternalFrame {
 
         jLabel1.setText("ID:");
 
-        jLabel4.setText("ICONE");
-
-        listContasPagas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
+        listContasRecebida.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jLabel3.setText("ID");
 
@@ -106,7 +81,9 @@ public class ContasPagas extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Débito");
 
-        jLabel7.setText("Pagamento");
+        jLabel7.setText("Recebimento");
+
+        jLabel4.setText("ICONE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +102,7 @@ public class ContasPagas extends javax.swing.JInternalFrame {
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(listContasPagas, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listContasRecebida, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(11, 11, 11)
                                         .addComponent(jLabel3)
@@ -139,7 +116,7 @@ public class ContasPagas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContaPaga, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtContaRecebida, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(0, 0, Short.MAX_VALUE))
@@ -155,14 +132,14 @@ public class ContasPagas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listContasPagas, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(listContasRecebida, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,7 +147,7 @@ public class ContasPagas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(2, 2, 2)
-                .addComponent(txtContaPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContaRecebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
@@ -191,10 +168,10 @@ public class ContasPagas extends javax.swing.JInternalFrame {
             id = Integer.parseInt(this.txtID.getText());
             confirma = true;
             try {
-                valor = Float.parseFloat(this.txtContaPaga.getText());
-                conta = bd.buscaContasAPagarID(id, 1);
+                valor = Float.parseFloat(this.txtContaRecebida.getText());
+                conta = bd.buscaContasAPagarID(id, 2);
                 if(valor == conta)
-                    confirma = true;
+                confirma = true;
                 else{
                     JOptionPane.showMessageDialog(null, "Valor não correspondente, nota de R$" + conta);
                     confirma = false;
@@ -208,34 +185,32 @@ public class ContasPagas extends javax.swing.JInternalFrame {
             confirma = false;
         }
         if (confirma == true) {
-            bd.atualizarContasPagar(id, "", 0, valor);
+            bd.atualizarContasReceber(id, "", 0, valor);
             this.txtID.setText("");
-            this.txtContaPaga.setText("");
-            this.listContasPagas.clear();
+            this.txtContaRecebida.setText("");
+            this.listContasRecebida.clear();
         }
-
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtContaPagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContaPagaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContaPagaActionPerformed
-
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-    ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-       
-        for (int i = 0; i < bd.buscarContasAPagar().size(); i++) {
-            if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAPagar().get(i).getContasPagar() > 0) {
-                contaP = "" + bd.buscarContasAPagar().get(i).getContasPagas();
-                contaAP = "" + bd.buscarContasAPagar().get(i).getContasPagar();
-                this.listContasPagas.add(bd.buscarContasAPagar().get(i).getID() + "  |  " + bd.buscarContasAPagar().get(i).getNome() + "  |  " + contaAP + "  |  " + contaP);
+        for (int i = 0; i < bd.buscarContasAReceber().size(); i++) {
+            if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasReceber()> 0) {
+                contaP = "" + bd.buscarContasAReceber().get(i).getContasRecebidas();
+                contaAP = "" + bd.buscarContasAReceber().get(i).getContasReceber();
+                this.listContasRecebida.add(bd.buscarContasAReceber().get(i).getID() + "  |  " + bd.buscarContasAReceber().get(i).getNome() + "  |  " + contaAP + "  |  " + contaP);
 
             }
 
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtContaRecebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContaRecebidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContaRecebidaActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -248,12 +223,8 @@ public class ContasPagas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private java.awt.List listContasPagas;
-    private javax.swing.JTextField txtContaPaga;
+    private java.awt.List listContasRecebida;
+    private javax.swing.JTextField txtContaRecebida;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

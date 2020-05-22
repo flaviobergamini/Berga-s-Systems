@@ -49,6 +49,7 @@ public class Tela1 extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -257,6 +258,14 @@ public class Tela1 extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem2);
+
+        jMenuItem14.setText("Contas Recebidas");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem14);
         jMenu2.add(jSeparator1);
 
         jMenuItem3.setText("Gestão de custo");
@@ -374,6 +383,13 @@ public class Tela1 extends javax.swing.JFrame {
         conta.setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        ContasRecebidas conta = new ContasRecebidas();
+        this.jDesktop.add(conta);
+        conta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -424,6 +440,7 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
