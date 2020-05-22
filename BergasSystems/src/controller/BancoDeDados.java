@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Contas;
 import model.ContasAPagar;
 import model.ContasAReceber;
@@ -106,6 +107,7 @@ public class BancoDeDados {
             //e assim por diante....
             pst.execute();
             sucesso = true;
+            JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
@@ -134,6 +136,7 @@ public class BancoDeDados {
             //e assim por diante....
             pst.execute();
             sucesso = true;
+            JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
@@ -163,6 +166,7 @@ public class BancoDeDados {
             //e assim por diante....
             pst.execute();
             sucesso = true;
+            JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
@@ -190,6 +194,7 @@ public class BancoDeDados {
             //e assim por diante....
             pst.execute();
             sucesso = true;
+            JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
@@ -861,7 +866,6 @@ public class BancoDeDados {
     /**
      * ********************** BUSCAR DADOS ********************************
      */
-    
     public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() 
     {
         ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
@@ -903,6 +907,32 @@ public class BancoDeDados {
         return listaDeFluxo;
     }
     
+    public float buscaContasAPagarID(int id){
+      connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_pagar WHERE ID="+id;  
+        float contaP = 0, contaAP;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            rs.next();
+            contaAP = rs.getFloat("contas_a_pagar"); 
+            contaP = rs.getFloat("contas_pagas");
+            System.out.println("************" + contaAP + "*****" + contaP + "**************");
+            return contaAP;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                rs.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return -1;
+    }
     public ArrayList<ContasAPagar> buscarContasAPagar() 
     {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
@@ -918,9 +948,11 @@ public class BancoDeDados {
             {
                 //System.out.println(rs.getString("nome"));
                 ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"));
+                conta.setID(rs.getString("ID"));
                 System.out.println("Nome = " + conta.getNome());
                 System.out.println("Contas a Pagar: " + conta.getContasPagar());
                 System.out.println("Contas Pagas: " + conta.getContasPagas());
+                System.out.println("ID = " + conta.getID());
                 System.out.println("---------------------------------");
                 listaDeContasAPagar.add(conta);
             }
