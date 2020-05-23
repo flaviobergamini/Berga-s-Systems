@@ -13,10 +13,10 @@ public class ContasAPagar extends Contas{
     private float contasPagar;
     private float contasPagas;
     
-    public ContasAPagar(String nome, float contasPagar, float contasPagas){
+    public ContasAPagar(String nome, float contasPagar, float contasPagas, String data){
         this.contasPagar = contasPagar;
         this.contasPagas = contasPagas;
-        this.criaConta(nome, 0);
+        this.criaConta(nome, 0, data);
     }
 
     public float getContasPagar() {
@@ -27,7 +27,7 @@ public class ContasAPagar extends Contas{
         return contasPagas;
     }
     
-    public String getData(){
-        return this.getData();
-    }
+   // public String getDataP(){
+   //     return this.getData();
+    //}
 }

@@ -15,16 +15,10 @@ public class ContasAReceber extends Contas{
     private float contasReceber;
     private float contasRecebidas;
     
-    public ContasAReceber(String nome, float contasReceber, float contasRecebidas){
+    public ContasAReceber(String nome, float contasReceber, float contasRecebidas, String data){
         this.contasReceber = contasReceber;
         this.contasRecebidas = contasRecebidas;
-        this.criaConta(nome, 0);
-    }
-    
-    public ContasAReceber(String nome, float contasReceber, float contasRecebidas, float valor){
-        this.contasReceber = contasReceber;
-        this.contasRecebidas = contasRecebidas;
-        this.criaConta(nome, valor);
+        this.criaConta(nome, 0, data);
     }
 
     public float getContasReceber() {
@@ -34,9 +28,4 @@ public class ContasAReceber extends Contas{
     public float getContasRecebidas() {
         return contasRecebidas;
     }
-    
-    public String getData(){
-        return this.getData();
-    }
-
 }

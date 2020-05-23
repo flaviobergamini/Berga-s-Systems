@@ -103,7 +103,7 @@ public class BancoDeDados {
             pst.setString(1, novaConta.getNome()); //1- refere-se à primeira interrogação
             pst.setFloat(2, novaConta.getContasPagar());  //2- refere-se à segunda interrogação
             pst.setFloat(3, novaConta.getContasPagas());  //3- refere-se à segunda interrogação
-            pst.setString(4, "19/05/2020");
+            pst.setString(4, novaConta.getData());
             //e assim por diante....
             pst.execute();
             sucesso = true;
@@ -132,7 +132,7 @@ public class BancoDeDados {
             pst.setString(1, novaConta.getNome()); //1- refere-se à primeira interrogação
             pst.setFloat(2, novaConta.getContasReceber());  //2- refere-se à segunda interrogação
             pst.setFloat(3, novaConta.getContasRecebidas());  //3- refere-se à segunda interrogação
-            pst.setString(4, "19/05/2020");
+            pst.setString(4, novaConta.getData());
             //e assim por diante....
             pst.execute();
             sucesso = true;
@@ -946,13 +946,13 @@ public class BancoDeDados {
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
-                ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"));
-                conta.setID(rs.getString("ID"));
+                ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
                 System.out.println("Nome = " + conta.getNome());
                 System.out.println("Contas a Pagar: " + conta.getContasPagar());
                 System.out.println("Contas Pagas: " + conta.getContasPagas());
                 System.out.println("ID = " + conta.getID());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------"); */
                 listaDeContasAPagar.add(conta);
             }
             sucesso = true;
@@ -981,12 +981,12 @@ public class BancoDeDados {
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
-                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"));
-                conta.setID(rs.getString("ID"));
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
                 System.out.println("Nome = " + conta.getNome());
                 System.out.println("Contas a Receber: " + conta.getContasReceber());
                 System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------"); */
                 listaDeContasAReceber.add(conta);
             }
             sucesso = true;

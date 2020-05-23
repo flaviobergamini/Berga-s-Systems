@@ -13,6 +13,9 @@ import java.util.Date;
  */
 public abstract class Contas {
     private String ID;
+    private float valor;
+    private String nome;
+    private String data;
 
     public String getID() {
         return ID;
@@ -21,19 +24,15 @@ public abstract class Contas {
     public void setID(String ID) {
         this.ID = ID;
     }
-    private float valor;
-    private String datas;
-    private String nome;
-    Date data = new Date();
-    public Contas(){
-        this.datas = data.toString();
-    }
-    public void criaConta(String nome, float valor){
+   
+    public void criaConta(String nome, float valor, String data){
         this.nome = nome;
         this.valor = valor;
+        this.data = data;
     }
+    
     public String getData(){
-        return this.datas;
+        return this.data;
     }
     
     public String getNome(){
