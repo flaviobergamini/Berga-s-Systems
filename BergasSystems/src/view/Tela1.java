@@ -42,8 +42,7 @@ public class Tela1 extends javax.swing.JFrame {
         jDesktop = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         MenuPrincipal = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -56,9 +55,6 @@ public class Tela1 extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -156,9 +152,12 @@ public class Tela1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Fluxo de Caixa");
-
-        jButton2.setText("Sair");
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -173,9 +172,7 @@ public class Tela1 extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton2)
+                        .addComponent(btnSair)
                         .addGap(21, 21, 21)))
                 .addContainerGap())
         );
@@ -187,9 +184,7 @@ public class Tela1 extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                .addComponent(btnSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -259,19 +254,15 @@ public class Tela1 extends javax.swing.JFrame {
 
         MenuPrincipal.add(jMenu2);
 
-        jMenu4.setText("Consultas");
+        jMenu4.setText("Consultar");
 
-        jMenuItem7.setText("Contas a Pagar");
+        jMenuItem7.setText("Consultas");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem7);
-
-        jMenuItem8.setText("Contas a Receber");
-        jMenu4.add(jMenuItem8);
-
-        jMenuItem9.setText("Extrato Bancário");
-        jMenu4.add(jMenuItem9);
-
-        jMenuItem10.setText("Relatórios");
-        jMenu4.add(jMenuItem10);
 
         MenuPrincipal.add(jMenu4);
 
@@ -297,6 +288,11 @@ public class Tela1 extends javax.swing.JFrame {
         jMenu5.add(jSeparator2);
 
         jMenuItem12.setText("Sair");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem12);
 
         MenuPrincipal.add(jMenu5);
@@ -351,7 +347,7 @@ public class Tela1 extends javax.swing.JFrame {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Flavio Henrique Madureira Bergamini \nCurso: Engenharia da Computalção\nMatricula: 1450\nData: Junho de 2020");
+        JOptionPane.showMessageDialog(null, "Flavio Henrique Madureira Bergamini\n\nCurso: Engenharia da Computalção\nMatricula: 1450\nData: Junho de 2020\n\nCopyright by Berga's Corporation");
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -382,6 +378,23 @@ public class Tela1 extends javax.swing.JFrame {
         banco.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        Consultas consulta = new Consultas();
+        this.jDesktop.add(consulta);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -419,8 +432,7 @@ public class Tela1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuPrincipal;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSair;
     private javax.swing.JDesktopPane jDesktop;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
@@ -429,7 +441,6 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
@@ -441,8 +452,6 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;

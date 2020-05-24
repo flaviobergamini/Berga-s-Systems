@@ -1050,9 +1050,10 @@ public class BancoDeDados {
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 GestaoCusto gestao = new GestaoCusto(rs.getString("nome"), rs.getFloat("valor"));
+                gestao.setID(rs.getString("ID")); /*
                 System.out.println("Nome = " + gestao.getNome());
                 System.out.println("Valor: " + gestao.getValor());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------"); */
                 listaGestao.add(gestao);
             }
             sucesso = true;
@@ -1082,11 +1083,11 @@ public class BancoDeDados {
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"), rs.getFloat("valor_de_saida"));
-                extrato.setID(rs.getString("ID"));
+                extrato.setID(rs.getString("ID")); /*
                 System.out.println("Nome = " + extrato.getNome());
                 System.out.println("Valor de Entrada: " + extrato.getEntrada());
                 System.out.println("Valor de Saída: " + extrato.getSaida());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------");*/
                 listaExtrato.add(extrato);
             }
             sucesso = true;

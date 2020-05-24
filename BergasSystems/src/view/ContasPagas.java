@@ -183,7 +183,6 @@ public class ContasPagas extends javax.swing.JInternalFrame {
     BancoDeDados bd = new BancoDeDados();
     private String contaP;
     private String contaAP;
-    Tela1 t = new Tela1();
     
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         int id = 0;

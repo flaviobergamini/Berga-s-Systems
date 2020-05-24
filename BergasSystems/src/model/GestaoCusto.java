@@ -10,6 +10,7 @@ package model;
  * @author fhmbe
  */
 public class GestaoCusto {
+    private String ID;
     private String nome;
     private float valor;
     
@@ -25,4 +26,14 @@ public class GestaoCusto {
     public float getValor() {
         return valor;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    
+    
 }
