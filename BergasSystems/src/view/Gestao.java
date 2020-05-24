@@ -117,6 +117,7 @@ public class Gestao extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
     BancoDeDados bd = new BancoDeDados();
+    Tela1 t = new Tela1();
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO adtxtCustoling code here:
         GestaoCusto gc;
@@ -128,6 +129,9 @@ public class Gestao extends javax.swing.JInternalFrame {
             if (nome.length() > 0 && pagar > 0) {
                 gc = new GestaoCusto(nome, pagar);
                 bd.inserirGestaoCusto(gc);
+                this.txtCusto.setText("");
+                this.txtValor.setText("");
+               //  t.atualizaTela();
             } else {
                 if (nome.length() == 0) {
                     JOptionPane.showMessageDialog(null, "Insira a identificação para o custo");
@@ -139,8 +143,7 @@ public class Gestao extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e + "\nInsira um valor válido");
         }
-        this.txtCusto.setText("");
-        this.txtValor.setText("");
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
 

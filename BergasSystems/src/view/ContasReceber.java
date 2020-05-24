@@ -138,6 +138,7 @@ public class ContasReceber extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataActionPerformed
     BancoDeDados bd = new BancoDeDados();
+    Tela1 t = new Tela1();
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         ContasAReceber cr;
@@ -162,6 +163,7 @@ public class ContasReceber extends javax.swing.JInternalFrame {
                 this.txtCliente.setText("");
                 this.txtData.setText("");
                 this.txtContaReceber.setText("");
+                 //t.atualizaTela();
             } else {
                 if (cliente.length() == 0) {
                     JOptionPane.showMessageDialog(null, "Insira o nome do Cliente");
@@ -173,6 +175,7 @@ public class ContasReceber extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e + "\nInsira um valor válido");
         }
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed

@@ -10,6 +10,7 @@ package model;
  * @author fhmbe
  */
 public class ExtratoBancario {
+    private String ID;
     private String nome;
     private float entrada;
     private float saida;
@@ -32,5 +33,12 @@ public class ExtratoBancario {
         return saida;
     }
     
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
     
 }

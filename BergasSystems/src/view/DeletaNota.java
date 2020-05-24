@@ -236,7 +236,7 @@ public class DeletaNota extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma opção para pesquisar");
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
-
+    Tela1 t = new Tela1();
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         int id = 0;
         try{
@@ -266,6 +266,7 @@ public class DeletaNota extends javax.swing.JInternalFrame {
         }
         else
             JOptionPane.showMessageDialog(null, "Selecione uma opção para excluir");
+       // t.atualizaTela();
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed

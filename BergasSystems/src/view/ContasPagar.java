@@ -130,7 +130,8 @@ public class ContasPagar extends javax.swing.JInternalFrame {
     private void txtContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContasPagarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContasPagarActionPerformed
-
+    
+    Tela1 t = new Tela1();
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         ContasAPagar cp;
@@ -155,6 +156,7 @@ public class ContasPagar extends javax.swing.JInternalFrame {
                 this.txtFornecedor.setText("");
                 this.txtContasPagar.setText("");
                 this.txtData.setText("");
+                 //t.atualizaTela();
             } else {
                 if (fornecedor.length() == 0) {
                     JOptionPane.showMessageDialog(null, "Insira o nome do fornecedor");

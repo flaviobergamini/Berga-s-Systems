@@ -160,6 +160,8 @@ public class ContasRecebidas extends javax.swing.JInternalFrame {
     BancoDeDados bd = new BancoDeDados();
     private String contaP;
     private String contaAP;
+    Tela1 t = new Tela1();
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         int id = 0;
         float valor = 0, conta = 0;
@@ -190,6 +192,7 @@ public class ContasRecebidas extends javax.swing.JInternalFrame {
             this.txtContaRecebida.setText("");
             this.listContasRecebida.clear();
         }
+        //t.atualizaTela();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
