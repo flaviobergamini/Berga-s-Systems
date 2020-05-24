@@ -57,12 +57,17 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="listBuscar" min="-2" pref="204" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="slnAtualizar" min="-2" max="-2" attributes="0"/>
-                                  <Component id="slnCadastrar" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="slnAtualizar" min="-2" max="-2" attributes="0"/>
+                                          <Component id="slnCadastrar" min="-2" max="-2" attributes="0"/>
+                                          <Component id="slnExcluir" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnListar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -96,7 +101,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -120,13 +125,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="listBuscar" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Component id="slnAtualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="slnCadastrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="slnExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Component id="btnListar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -221,6 +226,11 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Saldo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="slnExcluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
     </Component>
   </SubComponents>

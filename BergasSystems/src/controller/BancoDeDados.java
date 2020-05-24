@@ -194,7 +194,6 @@ public class BancoDeDados {
             //e assim por diante....
             pst.execute();
             sucesso = true;
-            JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;

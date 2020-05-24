@@ -48,6 +48,7 @@ public class Banco extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        slnExcluir = new javax.swing.JRadioButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -94,6 +95,8 @@ public class Banco extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Saldo");
 
+        slnExcluir.setText("Excluir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,12 +111,15 @@ public class Banco extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(listBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(slnAtualizar)
-                                    .addComponent(slnCadastrar)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(slnAtualizar)
+                                            .addComponent(slnCadastrar)
+                                            .addComponent(slnExcluir)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
                                         .addComponent(btnListar))))
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -135,7 +141,7 @@ public class Banco extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel6)
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel7)))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -155,13 +161,13 @@ public class Banco extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(listBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
                         .addComponent(slnAtualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(slnCadastrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnListar)
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(slnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(btnListar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -191,6 +197,7 @@ public class Banco extends javax.swing.JInternalFrame {
         // TODO adtxtCustoling code here:
         String nome;
         nome = "";
+        int id = 0;
         float pagar = -1;
         if (this.slnCadastrar.isSelected() == true) {
             try {
@@ -216,7 +223,7 @@ public class Banco extends javax.swing.JInternalFrame {
             }
         }
         else if(this.slnAtualizar.isSelected() == true){
-            int id = 0;
+            id = 0;
             nome = this.txtBanco.getText();
             try{
                 id = Integer.parseInt(this.txtID.getText());
@@ -235,9 +242,21 @@ public class Banco extends javax.swing.JInternalFrame {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Erro: " + e + "\nInsira um ID válido");
             }
+        } else if(this.slnExcluir.isSelected() == true){
+            id = 0;
+            try{
+                id = Integer.parseInt(this.txtID.getText());
+                bd.deletarExtrato(id);
+                this.txtBanco.setText("");
+                this.txtValor.setText("");
+                this.txtID.setText("");
+                this.listBuscar.clear();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Erro: " + e + "\nInsira um ID válido");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Selecionar uma opção (Atualizar ou Cadastrar) para proseguir com a operação");
+            JOptionPane.showMessageDialog(null, "Selecionar uma opção (Atualizar, Cadastrar ou Excluir) para proseguir com a operação");
         }
     }//GEN-LAST:event_btnExecutarActionPerformed
 
@@ -268,6 +287,7 @@ public class Banco extends javax.swing.JInternalFrame {
     private java.awt.List listBuscar;
     private javax.swing.JRadioButton slnAtualizar;
     private javax.swing.JRadioButton slnCadastrar;
+    private javax.swing.JRadioButton slnExcluir;
     private javax.swing.JTextField txtBanco;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtValor;
