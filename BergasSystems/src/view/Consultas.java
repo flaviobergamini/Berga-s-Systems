@@ -37,6 +37,10 @@ public class Consultas extends javax.swing.JInternalFrame {
         slnExtrato = new javax.swing.JRadioButton();
         btnConsultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        LN1 = new javax.swing.JLabel();
+        LN2 = new javax.swing.JLabel();
 
         slnCPagar.setText("Contas a Pagar");
 
@@ -55,6 +59,10 @@ public class Consultas extends javax.swing.JInternalFrame {
 
         jLabel1.setText("ICONE");
 
+        jLabel2.setText("ID");
+
+        jLabel3.setText("Nome");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,28 +73,44 @@ public class Consultas extends javax.swing.JInternalFrame {
                     .addComponent(listConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slnCReceber)
-                            .addComponent(slnCPagar))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slnExtrato)
-                            .addComponent(slnGestao))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnConsultar)
-                        .addGap(0, 21, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(slnCReceber)
+                                    .addComponent(slnCPagar))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(slnExtrato)
+                                    .addComponent(slnGestao))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnConsultar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(LN1)
+                                .addGap(18, 18, 18)
+                                .addComponent(LN2)))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
+                .addGap(180, 180, 180)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(listConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(LN1)
+                    .addComponent(LN2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,6 +136,8 @@ public class Consultas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.listConsultas.clear();
         if (this.slnCPagar.isSelected() == true) {
+            this.LN1.setText("A Pagar");
+            this.LN2.setText("Pagas");
             for (int i = 0; i < bd.buscarContasAPagar().size(); i++) {
                 if (bd.buscarContasAPagar().get(i) != null) {
                     contaP = "" + bd.buscarContasAPagar().get(i).getContasPagas();
@@ -121,6 +147,8 @@ public class Consultas extends javax.swing.JInternalFrame {
 
             }
         } else if (this.slnCReceber.isSelected() == true) {
+            this.LN1.setText("A Receber");
+            this.LN2.setText("Recebidas");
             for (int i = 0; i < bd.buscarContasAReceber().size(); i++) {
                 if (bd.buscarContasAReceber().get(i) != null) {
                     contaP = "" + bd.buscarContasAReceber().get(i).getContasRecebidas();
@@ -131,6 +159,8 @@ public class Consultas extends javax.swing.JInternalFrame {
 
             }
         } else if (this.slnExtrato.isSelected() == true) {
+            this.LN1.setText("Entrada");
+            this.LN2.setText("Saída");
             for (int i = 0; i < bd.buscarExtrato().size(); i++) {
                 if (bd.buscarExtrato().get(i) != null) {
                     this.listConsultas.add(bd.buscarExtrato().get(i).getID() + "  |  " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada() + "  |  "
@@ -138,6 +168,8 @@ public class Consultas extends javax.swing.JInternalFrame {
                 }
             }
         } else if (this.slnGestao.isSelected() == true) {
+            this.LN1.setText("Valor");
+            this.LN2.setText("");
             for (int i = 0; i < bd.buscarGestaoDeCusto().size(); i++) {
                 if (bd.buscarGestaoDeCusto().get(i) != null) {
                     this.listConsultas.add(bd.buscarGestaoDeCusto().get(i).getID() + "  |  " + bd.buscarGestaoDeCusto().get(i).getNome() + "  |  "
@@ -152,8 +184,12 @@ public class Consultas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LN1;
+    private javax.swing.JLabel LN2;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private java.awt.List listConsultas;
     private javax.swing.JRadioButton slnCPagar;
     private javax.swing.JRadioButton slnCReceber;
