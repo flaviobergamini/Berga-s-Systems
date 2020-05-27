@@ -45,7 +45,7 @@ create table relatorio(
     data varchar(45) not null,
     fk_idfluxo int,
     constraint fk3 
-		foreign key (fk_idfluxo) references fluxo_de_caixa(ID)
+		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
 );
 
 create table gestao_de_custo(
@@ -87,7 +87,7 @@ create table extrato_has_contas_a_receber(
 
 delimiter $$
 drop function if exists  Registro $$
-create function Registro(data_fluxo varchar(45))# returns varchar(20)
+create function Registro(data_fluxo varchar(45)) returns varchar(20)
 begin
     declare credito_r float;
     declare debito_r float;
@@ -101,14 +101,10 @@ begin
     SET nome_r = (SELECT nome from fluxo_de_caixa Where data = data_fluxo);
     
     INSERT INTO relatorio(credito, debito, nome, fk_idfluxo, data) VALUES (credito_r, debito_r, nome_r, fk_idfluxo_r, data_fluxo);
-	
-    #SET retorno = 'Estoque atualizado';
-    #return (retorno);
+	DELETE FROM contas_a_pagar WHERE contas_a_pagar = 0;
+    DELETE FROM contas_a_receber WHERE contas_a_receber = 0;
+    DELETE FROM gestao_de_custo;
+    SET retorno = 'Estoque atualizado';
+    return (retorno);
 end$$
 delimiter ;
-
-#INSERT INTO fluxo_de_caixa (credito, debito, nome, data) values ('200','0','teste1','27/05/2020');
-#SELECT * FROM fluxo_de_caixa;
-#SELECT Registro('27/05/2020') FROM fluxo_de_caixa;
-#SELECT * FROM relatorio;
-
