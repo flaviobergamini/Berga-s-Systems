@@ -64,10 +64,34 @@ public class BancoDeDados {
      *
      * @param fluxo
      */
+    
+    private void geraRelatorio(String data) {
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT Registro('" + data + "') FROM fluxo_de_caixa";
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            rs.next();
+
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                rs.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+    }
+    
     public boolean inserirFluxoCaixa(FluxoCaixa fluxo) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
-        String sql = "INSERT INTO fluxo_de_caixa (credito, debito, nome) values (?,?,?)";
+        String sql = "INSERT INTO fluxo_de_caixa (credito, debito, nome, data) values (?,?,?,?)";
         //O comando recebe paramêtros -> consulta dinâmica (pst)
 
         try {
@@ -75,9 +99,11 @@ public class BancoDeDados {
             pst.setFloat(1, fluxo.getCredito()); //1- refere-se à primeira interrogação
             pst.setFloat(2, fluxo.getDebito());  //2- refere-se à segunda interrogação
             pst.setString(3, fluxo.getNome());  //3- refere-se à segunda interrogação
+            pst.setString(4, fluxo.getData());  //3- refere-se à segunda interrogação
             //e assim por diante....
             pst.execute();
             sucesso = true;
+            geraRelatorio(fluxo.getData());
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
             sucesso = false;
@@ -875,7 +901,7 @@ public class BancoDeDados {
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
-                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
+                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
                 System.out.println("Nome = " + fluxo.getNome());
                 System.out.println("Crédito: " + fluxo.getCredito());
                 System.out.println("Débito: " + fluxo.getDebito());

@@ -13,13 +13,19 @@ public class FluxoCaixa {
     private String nome;
     private float credito;
     private float debito;
+    private String data;
     
-    public FluxoCaixa(String nome, float credito, float debito){
+    public FluxoCaixa(String nome, float credito, float debito, String data){
         this.nome = nome;
         this.credito = credito;
         this.debito = debito;
+        this.data = data;
     }
-
+    
+    public String getData(){
+        return this.data;
+    }
+    
     public String getNome() {
         return nome;
     }

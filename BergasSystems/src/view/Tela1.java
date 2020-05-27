@@ -41,7 +41,7 @@ public class Tela1 extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jDesktop = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopFluxo = new javax.swing.JDesktopPane();
         btnSair = new javax.swing.JButton();
         MenuPrincipal = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -124,14 +124,14 @@ public class Tela1 extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fluxo de Caixa", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDesktopFluxoLayout = new javax.swing.GroupLayout(jDesktopFluxo);
+        jDesktopFluxo.setLayout(jDesktopFluxoLayout);
+        jDesktopFluxoLayout.setHorizontalGroup(
+            jDesktopFluxoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 560, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDesktopFluxoLayout.setVerticalGroup(
+            jDesktopFluxoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 421, Short.MAX_VALUE)
         );
 
@@ -141,14 +141,14 @@ public class Tela1 extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1)
+                .addComponent(jDesktopFluxo)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1)
+                .addComponent(jDesktopFluxo)
                 .addContainerGap())
         );
 
@@ -269,6 +269,11 @@ public class Tela1 extends javax.swing.JFrame {
         jMenu3.setText("Gerar");
 
         jMenuItem5.setText("Fluxo de caixa");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Relatório");
@@ -394,6 +399,13 @@ public class Tela1 extends javax.swing.JFrame {
         this.jDesktop.add(consulta);
         consulta.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        FluxoDeCaixa fc = new FluxoDeCaixa();
+        this.jDesktopFluxo.add(fc);
+        fc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -434,7 +446,7 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JButton btnSair;
     private javax.swing.JDesktopPane jDesktop;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDesktopFluxo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
