@@ -2,11 +2,15 @@ drop database if exists financeiro;
 create database financeiro;
 use financeiro;
 
+SET GLOBAL log_bin_trust_function_creators = 1;
+SET SQL_SAFE_UPDATES = 0;
+
 create table fluxo_de_caixa(
 	ID int not null auto_increment primary key,
     credito float,
     debito float,
-    nome varchar(45) not null
+    nome varchar(45) not null,
+    data varchar(45) not null
 );
 
 create table contas_a_pagar(
@@ -35,10 +39,10 @@ SELECT * FROM contas_a_receber;
 
 create table relatorio(
 	ID int not null auto_increment primary key,
-    credito float not null,
-    debito float not null,
+    credito float,
+    debito float,
     nome varchar(45) not null,
-    data date not null,
+    data varchar(45) not null,
     fk_idfluxo int,
     constraint fk3 
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID)
@@ -81,4 +85,30 @@ create table extrato_has_contas_a_receber(
 		foreign key(fk_contas_a_receber) references contas_a_receber(ID) on update cascade
 );
 
+delimiter $$
+drop function if exists  Registro $$
+create function Registro(data_fluxo varchar(45))# returns varchar(20)
+begin
+    declare credito_r float;
+    declare debito_r float;
+    declare nome_r varchar(45);
+    declare fk_idfluxo_r int;
+    declare retorno varchar(20);
+    
+	SET fk_idfluxo_r = (SELECT ID from fluxo_de_caixa Where data = data_fluxo);
+    SET credito_r = (SELECT credito from fluxo_de_caixa Where data = data_fluxo);
+    SET debito_r = (SELECT debito from fluxo_de_caixa Where data = data_fluxo);
+    SET nome_r = (SELECT nome from fluxo_de_caixa Where data = data_fluxo);
+    
+    INSERT INTO relatorio(credito, debito, nome, fk_idfluxo, data) VALUES (credito_r, debito_r, nome_r, fk_idfluxo_r, data_fluxo);
+	
+    #SET retorno = 'Estoque atualizado';
+    #return (retorno);
+end$$
+delimiter ;
+
+#INSERT INTO fluxo_de_caixa (credito, debito, nome, data) values ('200','0','teste1','27/05/2020');
+#SELECT * FROM fluxo_de_caixa;
+#SELECT Registro('27/05/2020') FROM fluxo_de_caixa;
+#SELECT * FROM relatorio;
 
