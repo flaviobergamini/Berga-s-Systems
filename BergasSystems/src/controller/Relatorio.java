@@ -16,6 +16,7 @@ public class Relatorio {
     private float debito;
     private float credito;
     private String data;
+    private String ID;
     Date dataUp = new Date();
     
     public Relatorio(String nome, float credito, float debito){
@@ -23,6 +24,14 @@ public class Relatorio {
         this.credito = credito;
         this.debito = debito;
         this.data = dataUp.toString();
+    }
+    
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getNome() {

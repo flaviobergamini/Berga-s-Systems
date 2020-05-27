@@ -6,6 +6,9 @@
 package view;
 
 import controller.BancoDeDados;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -267,6 +270,11 @@ public class Tela1 extends javax.swing.JFrame {
         MenuPrincipal.add(jMenu4);
 
         jMenu3.setText("Gerar");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
         jMenuItem5.setText("Fluxo de caixa");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +284,12 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem5);
 
-        jMenuItem6.setText("Relatório");
+        jMenuItem6.setText("Buscar Relatórios");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         MenuPrincipal.add(jMenu3);
@@ -406,6 +419,23 @@ public class Tela1 extends javax.swing.JFrame {
         this.jDesktopFluxo.add(fc);
         fc.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        Relatorio rl = null;
+        try {
+            rl = new Relatorio();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tela1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.jDesktop.add(rl);
+        rl.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
     
     /**
      * @param args the command line arguments

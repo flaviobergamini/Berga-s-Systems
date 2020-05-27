@@ -59,7 +59,7 @@ public class Banco extends javax.swing.JInternalFrame {
 
         jLabel4.setText("ICONE");
 
-        jLabel1.setText("Nome do Banco: ");
+        jLabel1.setText("Nome da Agência Bancária: ");
 
         jLabel2.setText("Valor:");
 

@@ -890,6 +890,39 @@ public class BancoDeDados {
     /**
      * ********************** BUSCAR DADOS ********************************
      */
+    public ArrayList<FluxoCaixa> buscarFluxoDeCaixaID(int id) {
+        ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM fluxo_de_caixa WHERE ID=" + id;
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                //System.out.println(rs.getString("nome"));
+                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
+                /*System.out.println("Nome = " + fluxo.getNome());
+                System.out.println("Crédito: " + fluxo.getCredito());
+                System.out.println("Débito: " + fluxo.getDebito());
+                System.out.println("---------------------------------"); */
+                listaDeFluxo.add(fluxo);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeFluxo;
+    }
+    
     public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() {
         ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
         connectToDb();
@@ -902,10 +935,10 @@ public class BancoDeDados {
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
-                System.out.println("Nome = " + fluxo.getNome());
+                /*System.out.println("Nome = " + fluxo.getNome());
                 System.out.println("Crédito: " + fluxo.getCredito());
                 System.out.println("Débito: " + fluxo.getDebito());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------"); */
                 listaDeFluxo.add(fluxo);
             }
             sucesso = true;
@@ -1041,11 +1074,12 @@ public class BancoDeDados {
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 Relatorio relatorio = new Relatorio(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
-                System.out.println("Nome = " + relatorio.getNome());
+                relatorio.setID(rs.getString("ID"));
+                /*System.out.println("Nome = " + relatorio.getNome());
                 System.out.println("Crédito: " + relatorio.getCredito());
                 System.out.println("Débito: " + relatorio.getDebito());
                 System.out.println("Data:" + relatorio.getData());
-                System.out.println("---------------------------------");
+                System.out.println("---------------------------------"); */
                 listaRelatorios.add(relatorio);
             }
             sucesso = true;
