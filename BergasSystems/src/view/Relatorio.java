@@ -108,9 +108,9 @@ public class Relatorio extends javax.swing.JInternalFrame{
         // TODO add your handling code here:
         String var;
         for(int i = 0; i < bd.buscarFluxoDeCaixa().size(); i++){
-            if(bd.buscarRelatorio().get(i) != null){
-                this.listBuscar.add(bd.buscarRelatorio().get(i).getID() + "  |  " +  bd.buscarRelatorio().get(i).getNome() + "  |  " + bd.buscarRelatorio().get(i).getCredito() + "  |  " +
-                        bd.buscarRelatorio().get(i).getDebito());
+            if(bd.buscarFluxoDeCaixa().get(i) != null){
+                this.listBuscar.add( bd.buscarFluxoDeCaixa().get(i).getID() + "  |  " +  bd.buscarFluxoDeCaixa().get(i).getNome() + "  |  " + bd.buscarFluxoDeCaixa().get(i).getCredito() + "  |  " +
+                        bd.buscarFluxoDeCaixa().get(i).getDebito() + "  |  " +  bd.buscarFluxoDeCaixa().get(i).getData());
             }
         }
     }//GEN-LAST:event_btnListarActionPerformed

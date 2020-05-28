@@ -5,8 +5,13 @@
  */
 package view;
 
+import controller.Arquivo;
 import controller.BancoDeDados;
 import controller.FluxoCaixa;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +23,8 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
     /**
      * Creates new form FluxoDeCaixa
      */
-    public FluxoDeCaixa() {
+    public FluxoDeCaixa() throws FileNotFoundException {
+        this.file = new Arquivo();
         initComponents();
     }
 
@@ -47,7 +53,7 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fluxo"));
 
-        btnGerar.setText("Gerar");
+        btnGerar.setText("Gerar Fluxo de Caixa");
         btnGerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerarActionPerformed(evt);
@@ -64,51 +70,53 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(listFluxo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNomeFluxo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGerar)
-                .addGap(21, 21, 21))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(listFluxo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNomeFluxo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(btnGerar)
+                        .addGap(63, 63, 63))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(listFluxo, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGerar)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNomeFluxo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNomeFluxo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnGerar)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(2, 2, 2))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(3, 3, 3))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -123,6 +131,7 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
     private float bancoSaldos = 0;
     private float bancoDebitos = 0;
     private float totalLucro = 0;
+    Arquivo file;
 
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         // TODO add your handling code here: 
@@ -135,11 +144,10 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
         this.bancoDebitos = 0;
         this.totalLucro = 0;
         this.listFluxo.clear();
-        //this.txtData.setText("");
+        String cap, cp, car, cr, ca, sb;
         //String data = "";
         FluxoCaixa fc;
-        
-
+        try{
         if (this.txtData.getText().matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}") == false) {
             JOptionPane.showMessageDialog(null, "Formato de data inválido, seguir o formato: dd/mm/aaaa");
         } else {
@@ -147,49 +155,55 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
             for (int i = 0; i < bd.buscarContasAPagar().size(); i++) {
                 if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAPagar().get(i).getContasPagar() > 0) {
                     this.contasAPagar += bd.buscarContasAPagar().get(i).getContasPagar();
-                    this.listFluxo.add("Títulos serem Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagar() + "  |  "
-                            + bd.buscarContasAPagar().get(i).getData());
+                    cap = "Títulos serem Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagar() + "  |  "
+                            + bd.buscarContasAPagar().get(i).getData();
+                    this.listFluxo.add(cap);
+
                 } else if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAPagar().get(i).getContasPagas() > 0) {
                     this.contasPagas += bd.buscarContasAPagar().get(i).getContasPagas();
-                    this.listFluxo.add("Títulos Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagas() + "  |  "
-                            + bd.buscarContasAPagar().get(i).getData());
+                    cp = "Títulos Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagas() + "  |  "
+                            + bd.buscarContasAPagar().get(i).getData();
+                    this.listFluxo.add(cp);
                 }
             }
 
             for (int i = 0; i < bd.buscarContasAReceber().size(); i++) {
                 if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasReceber() > 0) {
                     this.contasAReceber += bd.buscarContasAReceber().get(i).getContasReceber();
-                    this.listFluxo.add("Títulos a serem Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasReceber() + "  |  "
-                            + bd.buscarContasAReceber().get(i).getData());
+                    car = "Títulos a serem Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasReceber() + "  |  "
+                            + bd.buscarContasAReceber().get(i).getData();
+                    this.listFluxo.add(car);
+
                 } else if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasRecebidas() > 0) {
                     this.contasRecebidas += bd.buscarContasAReceber().get(i).getContasRecebidas();
-                    this.listFluxo.add("Títulos Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasRecebidas() + "  |  "
-                            + bd.buscarContasAReceber().get(i).getData());
+                    cr = "Títulos Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasRecebidas() + "  |  "
+                            + bd.buscarContasAReceber().get(i).getData();
+                    this.listFluxo.add(cr);
                 }
             }
-            
+
             for (int i = 0; i < bd.buscarGestaoDeCusto().size(); i++) {
                 if (bd.buscarGestaoDeCusto().get(i) != null) {
                     this.custosValor += bd.buscarGestaoDeCusto().get(i).getValor();
-                    this.listFluxo.add("Custos adicionais: " + bd.buscarGestaoDeCusto().get(i).getNome() + "  |  " + bd.buscarGestaoDeCusto().get(i).getValor());
+                    ca = "Custos adicionais: " + bd.buscarGestaoDeCusto().get(i).getNome() + "  |  " + bd.buscarGestaoDeCusto().get(i).getValor();
+                    this.listFluxo.add(ca);
                 }
-
             }
 
             for (int i = 0; i < bd.buscarExtrato().size(); i++) {
                 if (bd.buscarExtrato().get(i) != null) {
                     this.bancoSaldos = bd.buscarExtrato().get(i).getEntrada();
-                    this.listFluxo.add("Saldos Bancários: " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada());
+                    sb = "Saldos Bancários: " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada();
+                    this.listFluxo.add(sb);
                 }
             }
 
             this.listFluxo.add("---------------------RESUMO-----------------------");
-
-            this.listFluxo.add("Contas a pagar: R$" + this.contasAPagar);
-            this.listFluxo.add("Contas Pagas: R$" + this.contasPagas);
+            this.listFluxo.add("Títulos a pagar: R$" + this.contasAPagar);
+            this.listFluxo.add("Títulos Pagos: R$" + this.contasPagas);
             this.listFluxo.add("--------------------------------------------------");
-            this.listFluxo.add("Contas a receber: R$" + this.contasAReceber);
-            this.listFluxo.add("Contas recebidas: R$" + this.contasRecebidas);
+            this.listFluxo.add("Títulos a receber: R$" + this.contasAReceber);
+            this.listFluxo.add("Título recebidos: R$" + this.contasRecebidas);
             this.listFluxo.add("--------------------------------------------------");
             this.listFluxo.add("Custos: R$" + this.custosValor);
             this.listFluxo.add("--------------------------------------------------");
@@ -215,8 +229,15 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
                 fc = new FluxoCaixa(this.txtNomeFluxo.getText(), 0, 0, this.txtData.getText());
                 this.listFluxo.add("+------------------------+");
             }
-            System.out.println("oiiii");
             bd.inserirFluxoCaixa(fc);
+            file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Títulos a pagar: R$" + this.contasAPagar + "\n" + "Títulos Pagos: R$" + this.contasPagas + 
+                    "\n" + "--------------------------------------------------" + "\n" + "Títulos a receber: R$" + this.contasAReceber + "\n" + "Títulos recebidos: R$" + this.contasRecebidas +
+                    "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor + "\n" + "--------------------------------------------------" +
+                            "\n" + "Lucro: R$" + this.totalLucro);
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(null, "Erro: " + ex);
         }
     }//GEN-LAST:event_btnGerarActionPerformed
 

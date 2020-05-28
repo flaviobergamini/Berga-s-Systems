@@ -935,6 +935,7 @@ public class BancoDeDados {
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
                 FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
+                fluxo.setID(rs.getString("ID"));
                 /*System.out.println("Nome = " + fluxo.getNome());
                 System.out.println("Crédito: " + fluxo.getCredito());
                 System.out.println("Débito: " + fluxo.getDebito());

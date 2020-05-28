@@ -10,6 +10,7 @@ package controller;
  * @author fhmbe
  */
 public class FluxoCaixa {
+    private String ID;
     private String nome;
     private float credito;
     private float debito;
@@ -21,7 +22,15 @@ public class FluxoCaixa {
         this.debito = debito;
         this.data = data;
     }
-    
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+   
     public String getData(){
         return this.data;
     }
