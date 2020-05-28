@@ -192,7 +192,7 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
 
             for (int i = 0; i < bd.buscarExtrato().size(); i++) {
                 if (bd.buscarExtrato().get(i) != null) {
-                    this.bancoSaldos = bd.buscarExtrato().get(i).getEntrada();
+                    this.bancoSaldos += bd.buscarExtrato().get(i).getEntrada();
                     sb = "Saldos Bancários: " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada();
                     this.listFluxo.add(sb);
                 }
@@ -232,8 +232,8 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
             bd.inserirFluxoCaixa(fc);
             file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Títulos a pagar: R$" + this.contasAPagar + "\n" + "Títulos Pagos: R$" + this.contasPagas + 
                     "\n" + "--------------------------------------------------" + "\n" + "Títulos a receber: R$" + this.contasAReceber + "\n" + "Títulos recebidos: R$" + this.contasRecebidas +
-                    "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor + "\n" + "--------------------------------------------------" +
-                            "\n" + "Lucro: R$" + this.totalLucro);
+                    "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor +  "\nSaldos: R$" + this.bancoSaldos + "\n" + 
+                            "--------------------------------------------------" + "\n" + "Lucro: R$" + this.totalLucro + "\nData: " + this.txtData.getText());
         }
         } catch (IOException ex) {
             Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
