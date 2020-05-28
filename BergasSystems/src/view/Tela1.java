@@ -25,6 +25,7 @@ public class Tela1 extends javax.swing.JFrame {
 
     public Tela1() {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Bergas_icon.png")).getImage());
     } 
 
 
@@ -46,6 +47,7 @@ public class Tela1 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jDesktopFluxo = new javax.swing.JDesktopPane();
         btnSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -91,6 +93,7 @@ public class Tela1 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Berga's Systems");
         setResizable(false);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Berga's Systems"));
@@ -155,6 +158,7 @@ public class Tela1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/door_out.png"))); // NOI18N
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,22 +166,24 @@ public class Tela1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bergas_icon.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSair)
-                        .addGap(21, 21, 21)))
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair)
+                .addGap(38, 38, 38))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,10 +193,15 @@ public class Tela1 extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSair)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnSair)
+                        .addGap(13, 13, 13)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/application_form_add.png"))); // NOI18N
         jMenu2.setText("Cadastrar");
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +209,7 @@ public class Tela1 extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group_gear.png"))); // NOI18N
         jMenuItem1.setText("Contas a pagar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +218,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group_link.png"))); // NOI18N
         jMenuItem13.setText("Contas pagas");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +227,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem13);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group_go.png"))); // NOI18N
         jMenuItem2.setText("Contas a Receber");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +236,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group.png"))); // NOI18N
         jMenuItem14.setText("Contas Recebidas");
         jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +246,7 @@ public class Tela1 extends javax.swing.JFrame {
         jMenu2.add(jMenuItem14);
         jMenu2.add(jSeparator1);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group_delete.png"))); // NOI18N
         jMenuItem15.setText("Excluir Conta");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +255,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem15);
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cart_add.png"))); // NOI18N
         jMenuItem3.setText("Gestão de custo");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +264,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem3);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/coins_add.png"))); // NOI18N
         jMenuItem4.setText("Bancos");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,8 +275,10 @@ public class Tela1 extends javax.swing.JFrame {
 
         MenuPrincipal.add(jMenu2);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zoom.png"))); // NOI18N
         jMenu4.setText("Consultar");
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zoom.png"))); // NOI18N
         jMenuItem7.setText("Consultas");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +289,7 @@ public class Tela1 extends javax.swing.JFrame {
 
         MenuPrincipal.add(jMenu4);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/report_add.png"))); // NOI18N
         jMenu3.setText("Gerar");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,6 +297,7 @@ public class Tela1 extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/page_add.png"))); // NOI18N
         jMenuItem5.setText("Fluxo de caixa");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +306,7 @@ public class Tela1 extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem5);
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/script_add.png"))); // NOI18N
         jMenuItem6.setText("Buscar Relatórios");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,8 +317,10 @@ public class Tela1 extends javax.swing.JFrame {
 
         MenuPrincipal.add(jMenu3);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/help.png"))); // NOI18N
         jMenu5.setText("Ajuda");
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/information.png"))); // NOI18N
         jMenuItem11.setText("Sobre");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +330,7 @@ public class Tela1 extends javax.swing.JFrame {
         jMenu5.add(jMenuItem11);
         jMenu5.add(jSeparator2);
 
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/door_out.png"))); // NOI18N
         jMenuItem12.setText("Sair");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -415,7 +441,12 @@ public class Tela1 extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        FluxoDeCaixa fc = new FluxoDeCaixa();
+        FluxoDeCaixa fc = null;
+        try {
+            fc = new FluxoDeCaixa();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tela1.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.jDesktopFluxo.add(fc);
         fc.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -477,6 +508,7 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JDesktopPane jDesktop;
     private javax.swing.JDesktopPane jDesktopFluxo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

@@ -53,6 +53,7 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fluxo"));
 
+        btnGerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/page_add.png"))); // NOI18N
         btnGerar.setText("Gerar Fluxo de Caixa");
         btnGerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +85,7 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addComponent(btnGerar)
                         .addGap(63, 63, 63))))
         );

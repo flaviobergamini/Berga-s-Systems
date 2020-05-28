@@ -57,7 +57,7 @@ public class Banco extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jLabel4.setText("ICONE");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1954882.png"))); // NOI18N
 
         jLabel1.setText("Nome da Agência Bancária: ");
 
@@ -109,18 +109,6 @@ public class Banco extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(listBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(slnAtualizar)
-                                            .addComponent(slnCadastrar)
-                                            .addComponent(slnExcluir)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(btnListar))))
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,17 +128,28 @@ public class Banco extends javax.swing.JInternalFrame {
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel6)
                                 .addGap(33, 33, 33)
-                                .addComponent(jLabel7)))))
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(listBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(slnAtualizar)
+                                            .addComponent(slnCadastrar)
+                                            .addComponent(slnExcluir)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addComponent(btnListar))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel4)))
                 .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(184, 184, 184))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel4)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -166,7 +165,7 @@ public class Banco extends javax.swing.JInternalFrame {
                         .addComponent(slnCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(slnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnListar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -182,7 +181,7 @@ public class Banco extends javax.swing.JInternalFrame {
                 .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExecutar)
-                .addGap(21, 21, 21))
+                .addGap(8, 8, 8))
         );
 
         pack();

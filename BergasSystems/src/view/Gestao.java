@@ -66,7 +66,7 @@ public class Gestao extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("ICONE");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invoice1.png"))); // NOI18N
 
         jLabel5.setText("ID");
 
@@ -141,7 +141,7 @@ public class Gestao extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -157,7 +157,7 @@ public class Gestao extends javax.swing.JInternalFrame {
                         .addComponent(slnExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(btnListar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
@@ -183,7 +183,7 @@ public class Gestao extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
 
         pack();

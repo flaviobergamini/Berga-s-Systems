@@ -57,7 +57,7 @@ public class Consultas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("ICONE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invoiceNew-icon.png"))); // NOI18N
 
         jLabel2.setText("ID");
 
@@ -91,26 +91,26 @@ public class Consultas extends javax.swing.JInternalFrame {
                                 .addComponent(LN1)
                                 .addGap(18, 18, 18)
                                 .addComponent(LN2)))
-                        .addGap(0, 19, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addGap(159, 159, 159)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(LN1)
                     .addComponent(LN2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                .addComponent(listConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -124,7 +124,7 @@ public class Consultas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btnConsultar)))
-                .addGap(21, 21, 21))
+                .addGap(15, 15, 15))
         );
 
         pack();

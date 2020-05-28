@@ -59,7 +59,7 @@ public class Relatorio extends javax.swing.JInternalFrame{
             }
         });
 
-        jLabel1.setText("ICONE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon-relatorios2.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,25 +79,25 @@ public class Relatorio extends javax.swing.JInternalFrame{
                         .addGap(18, 18, 18)
                         .addComponent(btnGerar)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
                 .addComponent(jLabel1)
-                .addGap(191, 191, 191))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
+                .addGap(15, 15, 15)
                 .addComponent(listBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGerar)
                     .addComponent(btnListar)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
 
         pack();

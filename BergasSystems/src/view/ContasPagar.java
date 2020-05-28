@@ -57,6 +57,7 @@ public class ContasPagar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/page_add.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +65,7 @@ public class ContasPagar extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("ICONE");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invoiceNew-icon.png"))); // NOI18N
 
         jLabel3.setText("Data:");
 
@@ -87,16 +88,16 @@ public class ContasPagar extends javax.swing.JInternalFrame {
                         .addGap(156, 156, 156)
                         .addComponent(btnCadastrar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addGap(156, 156, 156)
                         .addComponent(jLabel4)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

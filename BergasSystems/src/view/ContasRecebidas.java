@@ -83,7 +83,7 @@ public class ContasRecebidas extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Recebimento");
 
-        jLabel4.setText("ICONE");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invoice1.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,16 +123,16 @@ public class ContasRecebidas extends javax.swing.JInternalFrame {
                             .addComponent(txtID))))
                 .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
-                .addGap(191, 191, 191)
+                .addGap(182, 182, 182)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
@@ -152,7 +152,7 @@ public class ContasRecebidas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
                     .addComponent(btnPesquisar))
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
 
         pack();
