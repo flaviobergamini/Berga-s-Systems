@@ -167,6 +167,11 @@ public class Tela1 extends javax.swing.JFrame {
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bergas_icon.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -467,6 +472,12 @@ public class Tela1 extends javax.swing.JFrame {
         this.jDesktop.add(rl);
         rl.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Berga's Corporation e uma empresa ficticia com inspiração\n"
+                + "no nome do aluno Flavio Henrique Madureira Bergamini\nEstudante de Engenharia da Computalção no\nInstituto Nacional de Telecomunicações - INATEL");
+    }//GEN-LAST:event_jLabel1MouseClicked
     
     /**
      * @param args the command line arguments
