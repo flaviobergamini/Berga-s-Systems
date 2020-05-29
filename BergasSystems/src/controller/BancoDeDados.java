@@ -237,14 +237,13 @@ public class BancoDeDados {
     public boolean inserirExtrato(ExtratoBancario extrato) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
-        String sql = "INSERT INTO extrato (nome, valor_de_entrada, valor_de_saida) values (?,?,?)";
+        String sql = "INSERT INTO extrato (nome, valor_de_entrada) values (?,?)";
         //O comando recebe paramêtros -> consulta dinâmica (pst)
 
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, extrato.getNome());
             pst.setFloat(2, extrato.getEntrada());
-            pst.setFloat(3, extrato.getSaida());
             //e assim por diante....
             pst.execute();
             sucesso = true;
@@ -993,6 +992,76 @@ public class BancoDeDados {
         }
         return -1;
     }
+    
+    public ArrayList<ContasAPagar> buscarContasPagas() {
+        ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_pagar WHERE contas_pagas > 0";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                //System.out.println(rs.getString("nome"));
+                ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Pagar: " + conta.getContasPagar());
+                System.out.println("Contas Pagas: " + conta.getContasPagas());
+                System.out.println("ID = " + conta.getID());
+                System.out.println("---------------------------------"); */
+                listaDeContasAPagar.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAPagar;
+    }
+    
+    public ArrayList<ContasAPagar> buscarContasPagar() {
+        ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_pagar WHERE contas_a_pagar > 0";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                //System.out.println(rs.getString("nome"));
+                ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Pagar: " + conta.getContasPagar());
+                System.out.println("Contas Pagas: " + conta.getContasPagas());
+                System.out.println("ID = " + conta.getID());
+                System.out.println("---------------------------------"); */
+                listaDeContasAPagar.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAPagar;
+    }
 
     public ArrayList<ContasAPagar> buscarContasAPagar() {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
@@ -1028,7 +1097,75 @@ public class BancoDeDados {
         }
         return listaDeContasAPagar;
     }
-
+    
+    public ArrayList<ContasAReceber> buscarContasRecebidas() {
+        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_receber WHERE contas_recebidas > 0";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                //System.out.println(rs.getString("nome"));
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Receber: " + conta.getContasReceber());
+                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
+                System.out.println("---------------------------------"); */
+                listaDeContasAReceber.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAReceber;
+    }
+    
+    public ArrayList<ContasAReceber> buscarContasReceber() {
+        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_receber WHERE contas_a_receber > 0";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                //System.out.println(rs.getString("nome"));
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
+                conta.setID(rs.getString("ID")); /*
+                System.out.println("Nome = " + conta.getNome());
+                System.out.println("Contas a Receber: " + conta.getContasReceber());
+                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
+                System.out.println("---------------------------------"); */
+                listaDeContasAReceber.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAReceber;
+    }
+    
     public ArrayList<ContasAReceber> buscarContasAReceber() {
         ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
         connectToDb();
@@ -1142,7 +1279,7 @@ public class BancoDeDados {
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
                 //System.out.println(rs.getString("nome"));
-                ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"), rs.getFloat("valor_de_saida"));
+                ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"));
                 extrato.setID(rs.getString("ID")); /*
                 System.out.println("Nome = " + extrato.getNome());
                 System.out.println("Valor de Entrada: " + extrato.getEntrada());

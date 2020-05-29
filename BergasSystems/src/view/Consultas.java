@@ -163,8 +163,7 @@ public class Consultas extends javax.swing.JInternalFrame {
             this.LN2.setText("Saída");
             for (int i = 0; i < bd.buscarExtrato().size(); i++) {
                 if (bd.buscarExtrato().get(i) != null) {
-                    this.listConsultas.add(bd.buscarExtrato().get(i).getID() + "  |  " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada() + "  |  "
-                            + bd.buscarExtrato().get(i).getSaida());
+                    this.listConsultas.add(bd.buscarExtrato().get(i).getID() + "  |  " + bd.buscarExtrato().get(i).getNome() + "  |  " + bd.buscarExtrato().get(i).getEntrada());
                 }
             }
         } else if (this.slnGestao.isSelected() == true) {

@@ -153,32 +153,38 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Formato de data inválido, seguir o formato: dd/mm/aaaa");
         } else {
             this.listFluxo.add("--------------------------------------------------");
-            for (int i = 0; i < bd.buscarContasAPagar().size(); i++) {
-                if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAPagar().get(i).getContasPagar() > 0) {
+            for (int i = 0; i < bd.buscarContasPagar().size(); i++) {
+                if (bd.buscarContasPagar().get(i) != null) {
                     this.contasAPagar += bd.buscarContasAPagar().get(i).getContasPagar();
-                    cap = "Títulos serem Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagar() + "  |  "
-                            + bd.buscarContasAPagar().get(i).getData();
+                    cap = "Contas serem Pagas: " + bd.buscarContasPagar().get(i).getNome() + "  |  R$" + bd.buscarContasPagar().get(i).getContasPagar() + "  |  "
+                            + bd.buscarContasPagar().get(i).getData();
                     this.listFluxo.add(cap);
-
-                } else if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAPagar().get(i).getContasPagas() > 0) {
-                    this.contasPagas += bd.buscarContasAPagar().get(i).getContasPagas();
-                    cp = "Títulos Pagos: " + bd.buscarContasAPagar().get(i).getNome() + "  |  R$" + bd.buscarContasAPagar().get(i).getContasPagas() + "  |  "
-                            + bd.buscarContasAPagar().get(i).getData();
+                }
+            }
+            
+            for (int i = 0; i < bd.buscarContasPagas().size(); i++) {
+                 if (bd.buscarContasPagas().get(i) != null) {
+                    this.contasPagas += bd.buscarContasPagas().get(i).getContasPagas();
+                    cp = "Contas Pagas: " + bd.buscarContasPagas().get(i).getNome() + "  |  R$" + bd.buscarContasPagas().get(i).getContasPagas() + "  |  "
+                            + bd.buscarContasPagas().get(i).getData();
                     this.listFluxo.add(cp);
                 }
             }
 
-            for (int i = 0; i < bd.buscarContasAReceber().size(); i++) {
-                if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasReceber() > 0) {
-                    this.contasAReceber += bd.buscarContasAReceber().get(i).getContasReceber();
-                    car = "Títulos a serem Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasReceber() + "  |  "
-                            + bd.buscarContasAReceber().get(i).getData();
+            for (int i = 0; i < bd.buscarContasReceber().size(); i++) {
+                if (bd.buscarContasReceber().get(i) != null) {
+                    this.contasAReceber += bd.buscarContasReceber().get(i).getContasReceber();
+                    car = "Contas a serem Recebidas: " + bd.buscarContasReceber().get(i).getNome() + "  |  R$" + bd.buscarContasReceber().get(i).getContasReceber() + "  |  "
+                            + bd.buscarContasReceber().get(i).getData();
                     this.listFluxo.add(car);
-
-                } else if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasRecebidas() > 0) {
-                    this.contasRecebidas += bd.buscarContasAReceber().get(i).getContasRecebidas();
-                    cr = "Títulos Recebidos: " + bd.buscarContasAReceber().get(i).getNome() + "  |  R$" + bd.buscarContasAReceber().get(i).getContasRecebidas() + "  |  "
-                            + bd.buscarContasAReceber().get(i).getData();
+                }
+            }
+            
+            for (int i = 0; i < bd.buscarContasRecebidas().size(); i++) {
+                 if (bd.buscarContasRecebidas().get(i) != null) {
+                    this.contasRecebidas += bd.buscarContasRecebidas().get(i).getContasRecebidas();
+                    cr = "Contas Recebidas: " + bd.buscarContasRecebidas().get(i).getNome() + "  |  R$" + bd.buscarContasRecebidas().get(i).getContasRecebidas() + "  |  "
+                            + bd.buscarContasRecebidas().get(i).getData();
                     this.listFluxo.add(cr);
                 }
             }
@@ -200,11 +206,11 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
             }
 
             this.listFluxo.add("---------------------RESUMO-----------------------");
-            this.listFluxo.add("Títulos a pagar: R$" + this.contasAPagar);
-            this.listFluxo.add("Títulos Pagos: R$" + this.contasPagas);
+            this.listFluxo.add("Contas a pagar: R$" + this.contasAPagar);
+            this.listFluxo.add("Contas Pagas: R$" + this.contasPagas);
             this.listFluxo.add("--------------------------------------------------");
-            this.listFluxo.add("Títulos a receber: R$" + this.contasAReceber);
-            this.listFluxo.add("Título recebidos: R$" + this.contasRecebidas);
+            this.listFluxo.add("Contas a receber: R$" + this.contasAReceber);
+            this.listFluxo.add("Contas recebidas: R$" + this.contasRecebidas);
             this.listFluxo.add("--------------------------------------------------");
             this.listFluxo.add("Custos: R$" + this.custosValor);
             this.listFluxo.add("--------------------------------------------------");
@@ -231,8 +237,8 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
                 this.listFluxo.add("+------------------------+");
             }
             bd.inserirFluxoCaixa(fc);
-            file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Títulos a pagar: R$" + this.contasAPagar + "\n" + "Títulos Pagos: R$" + this.contasPagas + 
-                    "\n" + "--------------------------------------------------" + "\n" + "Títulos a receber: R$" + this.contasAReceber + "\n" + "Títulos recebidos: R$" + this.contasRecebidas +
+            file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Contas a pagar: R$" + this.contasAPagar + "\n" + "Contas Pagos: R$" + this.contasPagas + 
+                    "\n" + "--------------------------------------------------" + "\n" + "Contas a receber: R$" + this.contasAReceber + "\n" + "Contas recebidos: R$" + this.contasRecebidas +
                     "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor +  "\nSaldos: R$" + this.bancoSaldos + "\n" + 
                             "--------------------------------------------------" + "\n" + "Lucro: R$" + this.totalLucro + "\nData: " + this.txtData.getText());
         }

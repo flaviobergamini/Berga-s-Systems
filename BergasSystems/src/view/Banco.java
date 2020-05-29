@@ -203,7 +203,7 @@ public class Banco extends javax.swing.JInternalFrame {
                 nome = this.txtBanco.getText();
                 pagar = Float.parseFloat(this.txtValor.getText());
                 if (nome.length() > 0 && pagar > 0) {
-                    eb = new ExtratoBancario(nome, pagar, 0);
+                    eb = new ExtratoBancario(nome, pagar);
                     bd.inserirExtrato(eb);
                     this.txtBanco.setText("");
                     this.txtValor.setText("");

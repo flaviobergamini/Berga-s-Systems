@@ -13,12 +13,10 @@ public class ExtratoBancario {
     private String ID;
     private String nome;
     private float entrada;
-    private float saida;
     
-    public ExtratoBancario(String nome, float entrada, float saida){
+    public ExtratoBancario(String nome, float entrada){
         this.nome = nome;
         this.entrada = entrada;
-        this.saida = saida;
     }
 
     public String getNome() {
@@ -29,10 +27,6 @@ public class ExtratoBancario {
         return entrada;
     }
 
-    public float getSaida() {
-        return saida;
-    }
-    
     public String getID() {
         return ID;
     }
