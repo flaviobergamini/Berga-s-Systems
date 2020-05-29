@@ -61,7 +61,6 @@ create table extrato(
 	ID int not null auto_increment primary key,
     nome varchar(45) not null,
     valor_de_entrada float not null,
-    valor_de_saida float not null,
     fk_idfluxo int,
     constraint fk5
 		foreign key (fk_idfluxo) references fluxo_de_caixa(ID) on update cascade
@@ -104,7 +103,7 @@ begin
 	DELETE FROM contas_a_pagar WHERE contas_a_pagar = 0;
     DELETE FROM contas_a_receber WHERE contas_a_receber = 0;
     DELETE FROM gestao_de_custo;
-    SET retorno = 'Estoque atualizado';
+    SET retorno = 'Relatório adicionado';
     return (retorno);
 end$$
 delimiter ;
