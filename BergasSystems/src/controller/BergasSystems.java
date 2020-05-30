@@ -1,26 +1,32 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import view.Tela1;
 
 /**
  *
- * @author fhmbe
+ * A proposta desse trabalho é uma aplicação simples de um sistema financeiro
+ * para pequenas empresas e pode inclusive ser utilisado para uso pessoal para
+ * poder mellhor ornanizar as contas domésticas. Este é um projeto final para as
+ * disciplinas de Programação Orientada a Objetos e Banco de Dados
+ */
+/**
+ *
+ * @author Flávio Henrique Madureira Bergamini - estudante de Engenharia da
+ * Computação no Inatel
+ *
  */
 public class BergasSystems {
 
     /**
-     * @param args the command line arguments
+     *
+     * Método principal, onde inicia a interface gráfica chamando a primeira
+     * tela. Esta tela cujo nome é Tela1, se encontra no pacote view deste
+     * projeto.
+     *
      */
-    public static void main(String[] args) { //throws FileNotFoundException, IOException {
-        // TODO code application logic here
-        //Arquivo file = new Arquivo();
-        //file.WriteFile("Flavio Henrique Madureira Bergamini");
+    public static void main(String[] args) {
+
         new Tela1().setVisible(true);
     }
-    
+
 }

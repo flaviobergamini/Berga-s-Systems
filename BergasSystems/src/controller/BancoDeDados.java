@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.sql.Connection;
@@ -20,14 +15,16 @@ import model.ExtratoBancario;
 import model.GestaoCusto;
 
 /**
+ * Esta classe faz todo o CRUD com o banco SQL.
+ */
+
+/**
  *
- * @author fhmbe
+ * @author Flávio Henrique Madureira Bergamini - estudante de Engenharia da
+ * Computação no Inatel
  */
 public class BancoDeDados {
 
-    /**
-     * *************** CONEXÃO COM O BANCO DE DADOS ***********************
-     */
     // objeto responsável pela conexão com o servidor do banco de dados
     Connection con;
     // objeto responsável por preparar as consultas dinâmicas
@@ -48,7 +45,11 @@ public class BancoDeDados {
 
     boolean sucesso = false;
 
-    // Conectar ao banco de dados
+    /**
+     *
+     * O método "connectToDb" faz a conexão com o banco de dados SQL
+     *
+     */
     public void connectToDb() {
         try {
             con = DriverManager.getConnection(url, user, password);
@@ -60,11 +61,15 @@ public class BancoDeDados {
     }
 
     /**
-     * ********************** INSERIR DADOS
      *
-     * @param fluxo
+     * O método "geraRelatorio" chama o método Registro que está presente no
+     * banco SQL, ela é responsável por inserir os dados do fluxo de caixa na
+     * tabela relatório.
+     *
+     * @param data É a variável responsável para o método Resistro no banco
+     * selecionar o fluxo de dados corretamente e inserir na tablema relatório.
+     *
      */
-    
     private void geraRelatorio(String data) {
         connectToDb();
         //Comando em SQL:
@@ -87,7 +92,15 @@ public class BancoDeDados {
             }
         }
     }
-    
+
+    /**
+     *
+     * @param fluxo O objeto da classe FluxoCaixa é enviado como argumento para
+     * esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean inserirFluxoCaixa(FluxoCaixa fluxo) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -99,8 +112,8 @@ public class BancoDeDados {
             pst.setFloat(1, fluxo.getCredito()); //1- refere-se à primeira interrogação
             pst.setFloat(2, fluxo.getDebito());  //2- refere-se à segunda interrogação
             pst.setString(3, fluxo.getNome());  //3- refere-se à segunda interrogação
-            pst.setString(4, fluxo.getData());  //3- refere-se à segunda interrogação
-            //e assim por diante....
+            pst.setString(4, fluxo.getData());  //4- refere-se à segunda interrogação
+
             pst.execute();
             sucesso = true;
             geraRelatorio(fluxo.getData());
@@ -118,6 +131,14 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param novaConta O objeto da classe ContasAPagar é enviado como argumento
+     * para esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean inserirContasAPagar(ContasAPagar novaConta) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -130,7 +151,7 @@ public class BancoDeDados {
             pst.setFloat(2, novaConta.getContasPagar());  //2- refere-se à segunda interrogação
             pst.setFloat(3, novaConta.getContasPagas());  //3- refere-se à segunda interrogação
             pst.setString(4, novaConta.getData());
-            //e assim por diante....
+
             pst.execute();
             sucesso = true;
             JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
@@ -148,6 +169,14 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param novaConta O objeto da classe ContasAReceber é enviado como
+     * argumento para esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean inserirContasAReceber(ContasAReceber novaConta) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -159,7 +188,7 @@ public class BancoDeDados {
             pst.setFloat(2, novaConta.getContasReceber());  //2- refere-se à segunda interrogação
             pst.setFloat(3, novaConta.getContasRecebidas());  //3- refere-se à segunda interrogação
             pst.setString(4, novaConta.getData());
-            //e assim por diante....
+
             pst.execute();
             sucesso = true;
             JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
@@ -177,6 +206,14 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param novoRelatorio O objeto da classe Relatorio é enviado como
+     * argumento para esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean inserirRelatorio(Relatorio novoRelatorio) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -187,9 +224,9 @@ public class BancoDeDados {
             pst = con.prepareStatement(sql);
             pst.setFloat(1, novoRelatorio.getCredito());
             pst.setFloat(2, novoRelatorio.getDebito());
-            pst.setString(3, novoRelatorio.getNome()); //1- refere-se à primeira interrogação
+            pst.setString(3, novoRelatorio.getNome());
             pst.setString(4, novoRelatorio.getData());
-            //e assim por diante....
+
             pst.execute();
             sucesso = true;
             JOptionPane.showMessageDialog(null, "Cadastro feito Realizado com sucesso!");
@@ -207,6 +244,14 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param gestao O objeto da classe GestaoCusto é enviado como argumento
+     * para esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean inserirGestaoCusto(GestaoCusto gestao) {
         connectToDb(); //Conecta ao banco de dados
         //Comando em SQL:
@@ -217,34 +262,7 @@ public class BancoDeDados {
             pst = con.prepareStatement(sql);
             pst.setString(1, gestao.getNome());
             pst.setFloat(2, gestao.getValor());
-            //e assim por diante....
-            pst.execute();
-            sucesso = true;
-        } catch (SQLException ex) {
-            System.out.println("Erro = " + ex.getMessage());
-            sucesso = false;
-        } finally {
-            try {   //Encerra a conexão
-                con.close();
-                pst.close();
-            } catch (SQLException ex) {
-                System.out.println("Erro = " + ex.getMessage());
-            }
-        }
-        return sucesso;
-    }
 
-    public boolean inserirExtrato(ExtratoBancario extrato) {
-        connectToDb(); //Conecta ao banco de dados
-        //Comando em SQL:
-        String sql = "INSERT INTO extrato (nome, valor_de_entrada) values (?,?)";
-        //O comando recebe paramêtros -> consulta dinâmica (pst)
-
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, extrato.getNome());
-            pst.setFloat(2, extrato.getEntrada());
-            //e assim por diante....
             pst.execute();
             sucesso = true;
         } catch (SQLException ex) {
@@ -262,7 +280,56 @@ public class BancoDeDados {
     }
 
     /**
+     *
+     * @param extrato O objeto da classe ExtratoBancario é enviado como
+     * argumento para esse método, onde seus atributos são salvos na tabela SQL.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
+    public boolean inserirExtrato(ExtratoBancario extrato) {
+        connectToDb(); //Conecta ao banco de dados
+        //Comando em SQL:
+        String sql = "INSERT INTO extrato (nome, valor_de_entrada) values (?,?)";
+        //O comando recebe paramêtros -> consulta dinâmica (pst)
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, extrato.getNome());
+            pst.setFloat(2, extrato.getEntrada());
+
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {   //Encerra a conexão
+                con.close();
+                pst.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return sucesso;
+    }
+
+    /*
      * ********************** ATUALIZAR DADOS ********************************
+     */
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param nome Recebe o novo nome para ser atualizado na coluna da tabela do
+     * banco de dados
+     * @param credito Recebe o novo valor para ser atualizado na tabela do banco
+     * de dados
+     * @param debito Recebe o novo valor para ser atualizado na tabela do banco
+     * de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
      */
     public boolean atualizarfluxo(int id, String nome, float credito, float debito) {
         for (int i = 0; i < 4; i++) {
@@ -317,7 +384,6 @@ public class BancoDeDados {
 
                 }
                 credito = -1;
-                // return sucesso;
             } else if (debito > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -343,12 +409,25 @@ public class BancoDeDados {
 
                 }
                 debito = -1;
-                //return sucesso;
             }
         }
         return false;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param nome Recebe o novo nome para ser atualizado na coluna da tabela do
+     * banco de dados
+     * @param credito Recebe o novo valor para ser atualizado na tabela do banco
+     * de dados
+     * @param debito Recebe o novo valor para ser atualizado na tabela do banco
+     * de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean atualizarRelatorio(int id, String nome, float credito, float debito) {
         for (int i = 0; i < 4; i++) {
             if (nome.length() > 0) {
@@ -376,7 +455,7 @@ public class BancoDeDados {
 
                 }
                 nome = "";
-                //return sucesso;
+
             } else if (credito > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -402,7 +481,6 @@ public class BancoDeDados {
 
                 }
                 credito = -1;
-                // return sucesso;
             } else if (debito > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -428,12 +506,25 @@ public class BancoDeDados {
 
                 }
                 debito = -1;
-                //return sucesso;
             }
         }
         return false;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param fornecedor Recebe o novo nome de fornecedor para ser atualizado na
+     * coluna da tabela do banco de dados
+     * @param contasPagar Recebe o novo valor para ser atualizado na coluna da
+     * tabela do banco de dados
+     * @param contasPagas Recebe o novo valor para ser atualizado na coluna da
+     * tabela do banco de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean atualizarContasPagar(int id, String fornecedor, float contasPagar, float contasPagas) {
         for (int i = 0; i < 4; i++) {
             if (fornecedor.length() > 0) {
@@ -461,7 +552,6 @@ public class BancoDeDados {
 
                 }
                 fornecedor = "";
-                //return sucesso;
             } else if (contasPagar > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -487,7 +577,7 @@ public class BancoDeDados {
 
                 }
                 contasPagar = -1;
-                // return sucesso;
+
             } else if (contasPagas > -1) {
                 connectToDb();
                 //Comando em SQL
@@ -513,12 +603,25 @@ public class BancoDeDados {
 
                 }
                 contasPagas = -1;
-                //return sucesso;
             }
         }
         return false;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param cliente Recebe o novo nome do cliente para ser atualizado na
+     * coluna da tabela do banco de dados
+     * @param contasReceber Recebe o novo valor para ser atualizado na coluna da
+     * tabela do banco de dados
+     * @param contasRecebidas Recebe o novo valor para ser atualizado na coluna
+     * da tabela do banco de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean atualizarContasReceber(int id, String cliente, float contasReceber, float contasRecebidas) {
         for (int i = 0; i < 4; i++) {
             if (cliente.length() > 0) {
@@ -603,7 +706,19 @@ public class BancoDeDados {
         return false;
     }
 
-    public boolean atualizarExtrato(int id, String nome, float entrada, float saida) {
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param nome Recebe o novo nome para ser atualizado na coluna da tabela do
+     * banco de dados
+     * @param entrada Recebe o novo valor para ser atualizado na coluna da
+     * tabela do banco de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
+    public boolean atualizarExtrato(int id, String nome, float entrada) {
         for (int i = 0; i < 4; i++) {
             if (nome.length() > 0) {
                 connectToDb();
@@ -653,40 +768,24 @@ public class BancoDeDados {
                     } catch (SQLException ex) {
                         System.out.println("Erro = " + ex.getMessage());
                     }
-
                 }
-                entrada = -1;
-
-            } else if (saida > -1) {
-                connectToDb();
-                //Comando em SQL
-                String sql = "UPDATE extrato SET valor_de_saida=? WHERE id=?";
-
-                //O comando recebe paramêtros -> consulta dinâmica (pst)
-                try {
-                    pst = con.prepareStatement(sql);
-                    pst.setFloat(1, saida);
-                    pst.setInt(2, id);
-                    pst.execute();
-                    sucesso = true;
-                } catch (SQLException ex) {
-                    System.out.println("Erro = " + ex.getMessage());
-                    sucesso = false;
-                } finally {
-                    try {
-                        con.close();
-                        pst.close();
-                    } catch (SQLException ex) {
-                        System.out.println("Erro = " + ex.getMessage());
-                    }
-
-                }
-                saida = -1;
             }
         }
-        return false;
+        return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela, no qual quer se atualizar
+     * algum dado em alguma das colunas
+     * @param nome Recebe o novo nome para ser atualizado na coluna da tabela do
+     * banco de dados
+     * @param valor Recebe o novo valor para ser atualizado na coluna da tabela
+     * do banco de dados
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha.
+     */
     public boolean atualizarGestaoCusto(int id, String nome, float valor) {
         for (int i = 0; i < 3; i++) {
             if (nome.length() > 0) {
@@ -745,8 +844,15 @@ public class BancoDeDados {
         return false;
     }
 
-    /**
+    /*
      * ********************** DELETAR REGISTROS ******************************
+     */
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
      */
     public boolean deletarFluxo(int id) {
         connectToDb();
@@ -771,6 +877,13 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
+     */
     public boolean deletarContaPagar(int id) {
         connectToDb();
         //Comando em SQL:
@@ -794,6 +907,13 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
+     */
     public boolean deletarContaReceber(int id) {
         connectToDb();
         //Comando em SQL:
@@ -817,6 +937,13 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
+     */
     public boolean deletarRelatorio(int id) {
         connectToDb();
         //Comando em SQL:
@@ -840,6 +967,13 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
+     */
     public boolean deletarGestaoCusto(int id) {
         connectToDb();
         //Comando em SQL:
@@ -863,6 +997,13 @@ public class BancoDeDados {
         return sucesso;
     }
 
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer exlucir.
+     * @return Este Método retorna verdadeiro "true" quando a comunicação com o
+     * banco SQL foi um sucesso, e retorna falso "false" quando existe alguma
+     * falha
+     */
     public boolean deletarExtrato(int id) {
         connectToDb();
         //Comando em SQL:
@@ -886,8 +1027,14 @@ public class BancoDeDados {
         return sucesso;
     }
 
-    /**
+    /*
      * ********************** BUSCAR DADOS ********************************
+     */
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela no qual quer fazer a busca.
+     * @return Este Método retorna um ArrayList de todos os itens de uma linha
+     * específica pelo na tabela do banco SQL
      */
     public ArrayList<FluxoCaixa> buscarFluxoDeCaixaID(int id) {
         ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
@@ -899,46 +1046,7 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
-                /*System.out.println("Nome = " + fluxo.getNome());
-                System.out.println("Crédito: " + fluxo.getCredito());
-                System.out.println("Débito: " + fluxo.getDebito());
-                System.out.println("---------------------------------"); */
-                listaDeFluxo.add(fluxo);
-            }
-            sucesso = true;
-        } catch (SQLException ex) {
-            System.out.println("Erro = " + ex.getMessage());
-            sucesso = false;
-        } finally {
-            try {
-                con.close();
-                st.close();
-            } catch (SQLException ex) {
-                System.out.println("Erro = " + ex.getMessage());
-            }
-        }
-        return listaDeFluxo;
-    }
-    
-    public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() {
-        ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
-        connectToDb();
-        //Comando em SQL:
-        String sql = "SELECT * FROM fluxo_de_caixa";
-        //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
-                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
-                fluxo.setID(rs.getString("ID"));
-                /*System.out.println("Nome = " + fluxo.getNome());
-                System.out.println("Crédito: " + fluxo.getCredito());
-                System.out.println("Débito: " + fluxo.getDebito());
-                System.out.println("---------------------------------"); */
                 listaDeFluxo.add(fluxo);
             }
             sucesso = true;
@@ -956,6 +1064,50 @@ public class BancoDeDados {
         return listaDeFluxo;
     }
 
+    /**
+     *
+     * @return Este Método retorna um ArrayList de todos os itens da tabela do
+     * banco SQL
+     */
+    public ArrayList<FluxoCaixa> buscarFluxoDeCaixa() {
+        ArrayList<FluxoCaixa> listaDeFluxo = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM fluxo_de_caixa";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
+                fluxo.setID(rs.getString("ID"));
+                listaDeFluxo.add(fluxo);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeFluxo;
+    }
+
+    /**
+     *
+     * @param id Ele recebe o ID da linha na tabela onde se deseja colher o
+     * valor da conta.
+     * @param set Recebe o valor 1 para retornar os dados da tabela
+     * contas_a_pagar, ou qualquer outro valor diferente de 1 para retornar os
+     * dados dados da tabela contas_a_receber.
+     * @return De acordo com o valor atribuído ao argumento "set", retorna o
+     * valor para uma determinada conta a ser paga ou a ser recebida.
+     */
     public float buscaContasAPagarID(int id, int set) {
         connectToDb();
         //Comando em SQL:
@@ -977,7 +1129,6 @@ public class BancoDeDados {
                 contaAP = rs.getFloat("contas_a_receber");
                 contaP = rs.getFloat("contas_recebidas");
             }
-            //System.out.println("************" + contaAP + "*****" + contaP + "**************");
             return contaAP;
         } catch (SQLException ex) {
             System.out.println("Erro = " + ex.getMessage());
@@ -992,7 +1143,12 @@ public class BancoDeDados {
         }
         return -1;
     }
-    
+
+    /**
+     *
+     * @return Retorna todas as contas a pagar, cuja coluna contas_pagas da
+     * tabela do banco SQL é maior que zero
+     */
     public ArrayList<ContasAPagar> buscarContasPagas() {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
         connectToDb();
@@ -1003,14 +1159,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Pagar: " + conta.getContasPagar());
-                System.out.println("Contas Pagas: " + conta.getContasPagas());
-                System.out.println("ID = " + conta.getID());
-                System.out.println("---------------------------------"); */
+                conta.setID(rs.getString("ID"));
                 listaDeContasAPagar.add(conta);
             }
             sucesso = true;
@@ -1027,7 +1177,12 @@ public class BancoDeDados {
         }
         return listaDeContasAPagar;
     }
-    
+
+    /**
+     *
+     * @return Retorna todas as contas a pagar, cuja coluna contas_a_pagar da
+     * tabela do banco SQL é maior que zero
+     */
     public ArrayList<ContasAPagar> buscarContasPagar() {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
         connectToDb();
@@ -1038,14 +1193,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Pagar: " + conta.getContasPagar());
-                System.out.println("Contas Pagas: " + conta.getContasPagas());
-                System.out.println("ID = " + conta.getID());
-                System.out.println("---------------------------------"); */
+                conta.setID(rs.getString("ID"));
                 listaDeContasAPagar.add(conta);
             }
             sucesso = true;
@@ -1063,6 +1212,11 @@ public class BancoDeDados {
         return listaDeContasAPagar;
     }
 
+    /**
+     *
+     * @return Retorna todas as informações da tabela contas_a_pagar que estão
+     * no banco SQL.
+     */
     public ArrayList<ContasAPagar> buscarContasAPagar() {
         ArrayList<ContasAPagar> listaDeContasAPagar = new ArrayList<>();
         connectToDb();
@@ -1073,14 +1227,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 ContasAPagar conta = new ContasAPagar(rs.getString("fornecedor"), rs.getFloat("contas_a_pagar"), rs.getFloat("contas_pagas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Pagar: " + conta.getContasPagar());
-                System.out.println("Contas Pagas: " + conta.getContasPagas());
-                System.out.println("ID = " + conta.getID());
-                System.out.println("---------------------------------"); */
+                conta.setID(rs.getString("ID"));
                 listaDeContasAPagar.add(conta);
             }
             sucesso = true;
@@ -1097,7 +1245,12 @@ public class BancoDeDados {
         }
         return listaDeContasAPagar;
     }
-    
+
+    /**
+     *
+     * @return Retorna todas as contas a receber, cuja coluna contas_recebidas
+     * da tabela do banco SQL é maior que zero
+     */
     public ArrayList<ContasAReceber> buscarContasRecebidas() {
         ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
         connectToDb();
@@ -1108,81 +1261,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Receber: " + conta.getContasReceber());
-                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
-                System.out.println("---------------------------------"); */
-                listaDeContasAReceber.add(conta);
-            }
-            sucesso = true;
-        } catch (SQLException ex) {
-            System.out.println("Erro = " + ex.getMessage());
-            sucesso = false;
-        } finally {
-            try {
-                con.close();
-                st.close();
-            } catch (SQLException ex) {
-                System.out.println("Erro = " + ex.getMessage());
-            }
-        }
-        return listaDeContasAReceber;
-    }
-    
-    public ArrayList<ContasAReceber> buscarContasReceber() {
-        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
-        connectToDb();
-        //Comando em SQL:
-        String sql = "SELECT * FROM contas_a_receber WHERE contas_a_receber > 0";
-        //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
-                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Receber: " + conta.getContasReceber());
-                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
-                System.out.println("---------------------------------"); */
-                listaDeContasAReceber.add(conta);
-            }
-            sucesso = true;
-        } catch (SQLException ex) {
-            System.out.println("Erro = " + ex.getMessage());
-            sucesso = false;
-        } finally {
-            try {
-                con.close();
-                st.close();
-            } catch (SQLException ex) {
-                System.out.println("Erro = " + ex.getMessage());
-            }
-        }
-        return listaDeContasAReceber;
-    }
-    
-    public ArrayList<ContasAReceber> buscarContasAReceber() {
-        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
-        connectToDb();
-        //Comando em SQL:
-        String sql = "SELECT * FROM contas_a_receber";
-        //O comando NÃO recebe parâmetros -> consulta estática (st)
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
-            while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
-                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
-                conta.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + conta.getNome());
-                System.out.println("Contas a Receber: " + conta.getContasReceber());
-                System.out.println("Contas Recebidas: " + conta.getContasRecebidas());
-                System.out.println("---------------------------------"); */
+                conta.setID(rs.getString("ID"));
                 listaDeContasAReceber.add(conta);
             }
             sucesso = true;
@@ -1200,6 +1280,79 @@ public class BancoDeDados {
         return listaDeContasAReceber;
     }
 
+    /**
+     *
+     * @return Retorna todas as contas a receber, cuja coluna contas_a_receber
+     * da tabela do banco SQL é maior que zero
+     */
+    public ArrayList<ContasAReceber> buscarContasReceber() {
+        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_receber WHERE contas_a_receber > 0";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
+                conta.setID(rs.getString("ID"));
+                listaDeContasAReceber.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAReceber;
+    }
+
+    /**
+     *
+     * @return Retorna todas as informações da tabela contas_a_receber que estão
+     * no banco SQL.
+     */
+    public ArrayList<ContasAReceber> buscarContasAReceber() {
+        ArrayList<ContasAReceber> listaDeContasAReceber = new ArrayList<>();
+        connectToDb();
+        //Comando em SQL:
+        String sql = "SELECT * FROM contas_a_receber";
+        //O comando NÃO recebe parâmetros -> consulta estática (st)
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql); //ref. a tabela resultante da busca
+            while (rs.next()) {
+                ContasAReceber conta = new ContasAReceber(rs.getString("cliente"), rs.getFloat("contas_a_receber"), rs.getFloat("contas_recebidas"), rs.getString("data"));
+                conta.setID(rs.getString("ID"));
+                listaDeContasAReceber.add(conta);
+            }
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro = " + ex.getMessage());
+            }
+        }
+        return listaDeContasAReceber;
+    }
+
+    /**
+     *
+     * @return Retorna todas as informações da tabela relatorio que estão no
+     * banco SQL.
+     */
     public ArrayList<Relatorio> buscarRelatorio() {
         ArrayList<Relatorio> listaRelatorios = new ArrayList<>();
         connectToDb();
@@ -1210,14 +1363,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 Relatorio relatorio = new Relatorio(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"));
                 relatorio.setID(rs.getString("ID"));
-                /*System.out.println("Nome = " + relatorio.getNome());
-                System.out.println("Crédito: " + relatorio.getCredito());
-                System.out.println("Débito: " + relatorio.getDebito());
-                System.out.println("Data:" + relatorio.getData());
-                System.out.println("---------------------------------"); */
                 listaRelatorios.add(relatorio);
             }
             sucesso = true;
@@ -1235,6 +1382,11 @@ public class BancoDeDados {
         return listaRelatorios;
     }
 
+    /**
+     *
+     * @return Retorna todas as informações da tabela gestao_de_custo que estão
+     * no banco SQL.
+     */
     public ArrayList<GestaoCusto> buscarGestaoDeCusto() {
         ArrayList<GestaoCusto> listaGestao = new ArrayList<>();
         connectToDb();
@@ -1245,12 +1397,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 GestaoCusto gestao = new GestaoCusto(rs.getString("nome"), rs.getFloat("valor"));
-                gestao.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + gestao.getNome());
-                System.out.println("Valor: " + gestao.getValor());
-                System.out.println("---------------------------------"); */
+                gestao.setID(rs.getString("ID"));
                 listaGestao.add(gestao);
             }
             sucesso = true;
@@ -1268,6 +1416,11 @@ public class BancoDeDados {
         return listaGestao;
     }
 
+    /**
+     *
+     * @return Retorna todas as informações da tabela extrato que estão no banco
+     * SQL.
+     */
     public ArrayList<ExtratoBancario> buscarExtrato() {
         ArrayList<ExtratoBancario> listaExtrato = new ArrayList<>();
         connectToDb();
@@ -1278,13 +1431,8 @@ public class BancoDeDados {
             st = con.createStatement();
             rs = st.executeQuery(sql); //ref. a tabela resultante da busca
             while (rs.next()) {
-                //System.out.println(rs.getString("nome"));
                 ExtratoBancario extrato = new ExtratoBancario(rs.getString("nome"), rs.getFloat("valor_de_entrada"));
-                extrato.setID(rs.getString("ID")); /*
-                System.out.println("Nome = " + extrato.getNome());
-                System.out.println("Valor de Entrada: " + extrato.getEntrada());
-                System.out.println("Valor de Saída: " + extrato.getSaida());
-                System.out.println("---------------------------------");*/
+                extrato.setID(rs.getString("ID"));
                 listaExtrato.add(extrato);
             }
             sucesso = true;
