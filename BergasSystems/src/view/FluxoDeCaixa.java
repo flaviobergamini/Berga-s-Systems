@@ -29,8 +29,9 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
     }
 
     /**
-     * Este método é chamado de dentro do construtor para inicializar o formulário.
-     * AVISO: NÃO modifique este código. O conteúdo desse método é sempre regenerado pelo Editor de formulários.
+     * Este método é chamado de dentro do construtor para inicializar o
+     * formulário. AVISO: NÃO modifique este código. O conteúdo desse método é
+     * sempre regenerado pelo Editor de formulários.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -146,22 +147,22 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
         this.listFluxo.clear();
         String cap, cp, car, cr, ca, sb;
         FluxoCaixa fc;
-        try{
+
         if (this.txtData.getText().matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}") == false) {
             JOptionPane.showMessageDialog(null, "Formato de data inválido, seguir o formato: dd/mm/aaaa");
         } else {
             this.listFluxo.add("--------------------------------------------------");
             for (int i = 0; i < bd.buscarContasPagar().size(); i++) {
                 if (bd.buscarContasPagar().get(i) != null) {
-                    this.contasAPagar += bd.buscarContasAPagar().get(i).getContasPagar();
+                    this.contasAPagar += bd.buscarContasPagar().get(i).getContasPagar();
                     cap = "Contas serem Pagas: " + bd.buscarContasPagar().get(i).getNome() + "  |  R$" + bd.buscarContasPagar().get(i).getContasPagar() + "  |  "
                             + bd.buscarContasPagar().get(i).getData();
                     this.listFluxo.add(cap);
                 }
             }
-            
+
             for (int i = 0; i < bd.buscarContasPagas().size(); i++) {
-                 if (bd.buscarContasPagas().get(i) != null) {
+                if (bd.buscarContasPagas().get(i) != null) {
                     this.contasPagas += bd.buscarContasPagas().get(i).getContasPagas();
                     cp = "Contas Pagas: " + bd.buscarContasPagas().get(i).getNome() + "  |  R$" + bd.buscarContasPagas().get(i).getContasPagas() + "  |  "
                             + bd.buscarContasPagas().get(i).getData();
@@ -177,9 +178,9 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
                     this.listFluxo.add(car);
                 }
             }
-            
+
             for (int i = 0; i < bd.buscarContasRecebidas().size(); i++) {
-                 if (bd.buscarContasRecebidas().get(i) != null) {
+                if (bd.buscarContasRecebidas().get(i) != null) {
                     this.contasRecebidas += bd.buscarContasRecebidas().get(i).getContasRecebidas();
                     cr = "Contas Recebidas: " + bd.buscarContasRecebidas().get(i).getNome() + "  |  R$" + bd.buscarContasRecebidas().get(i).getContasRecebidas() + "  |  "
                             + bd.buscarContasRecebidas().get(i).getData();
@@ -235,15 +236,27 @@ public class FluxoDeCaixa extends javax.swing.JInternalFrame {
                 this.listFluxo.add("+------------------------+");
             }
             bd.inserirFluxoCaixa(fc);
-            file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Contas a pagar: R$" + this.contasAPagar + "\n" + "Contas Pagos: R$" + this.contasPagas + 
-                    "\n" + "--------------------------------------------------" + "\n" + "Contas a receber: R$" + this.contasAReceber + "\n" + "Contas recebidos: R$" + this.contasRecebidas +
-                    "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor +  "\nSaldos: R$" + this.bancoSaldos + "\n" + 
-                            "--------------------------------------------------" + "\n" + "Lucro: R$" + this.totalLucro + "\nData: " + this.txtData.getText());
+
+            boolean grava = true;
+            while (grava) {
+                try {
+                    file.WriteFile("---------------------RESUMO-----------------------" + "\n" + "Contas a pagar: R$" + this.contasAPagar + "\n" + "Contas Pagos: R$" + this.contasPagas
+                            + "\n" + "--------------------------------------------------" + "\n" + "Contas a receber: R$" + this.contasAReceber + "\n" + "Contas recebidos: R$" + this.contasRecebidas
+                            + "\n" + "--------------------------------------------------" + "\n" + "Custos: R$" + this.custosValor + "\nSaldos: R$" + this.bancoSaldos + "\n"
+                            + "--------------------------------------------------" + "\n" + "Lucro: R$" + this.totalLucro + "\nData: " + this.txtData.getText());
+                    grava = false;
+                } catch (IOException ex) {
+                    try {
+                        //Logger.getLogger(FluxoDeCaixa.class.getName()).log(Level.SEVERE, null, ex);
+                        this.file = new Arquivo();
+                    } catch (FileNotFoundException ex1) {
+                        Logger.getLogger(FluxoDeCaixa.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                    grava = true;
+                }
+            }
         }
-        } catch (IOException ex) {
-            Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
-             JOptionPane.showMessageDialog(null, "Erro: " + ex);
-        }
+
     }//GEN-LAST:event_btnGerarActionPerformed
 
 

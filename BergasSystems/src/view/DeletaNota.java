@@ -189,7 +189,7 @@ public class DeletaNota extends javax.swing.JInternalFrame {
         if (this.chContaAReceber.isSelected() == true) {
             this.listContas.clear();
             for (int i = 0; i < bd.buscarContasAReceber().size(); i++) {
-                if (bd.buscarContasAPagar().get(i) != null && bd.buscarContasAReceber().get(i).getContasReceber() > 0) {
+                if (bd.buscarContasAReceber().get(i) != null && bd.buscarContasAReceber().get(i).getContasReceber() > 0) {
                     contaP = "" + bd.buscarContasAReceber().get(i).getContasRecebidas();
                     contaAP = "" + bd.buscarContasAReceber().get(i).getContasReceber();
 
