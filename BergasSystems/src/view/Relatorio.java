@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Flávio Henrique Madureira Bergamini - estudante de Engenharia da
  * Computação no Inatel
  */
-public class Relatorio extends javax.swing.JInternalFrame{
+public class Relatorio extends javax.swing.JInternalFrame {
 
     /**
      * Cria um novo formulário Relatorio
@@ -28,8 +28,9 @@ public class Relatorio extends javax.swing.JInternalFrame{
     }
 
     /**
-     * Este método é chamado de dentro do construtor para inicializar o formulário.
-     * AVISO: NÃO modifique este código. O conteúdo desse método é sempre regenerado pelo Editor de formulários.
+     * Este método é chamado de dentro do construtor para inicializar o
+     * formulário. AVISO: NÃO modifique este código. O conteúdo desse método é
+     * sempre regenerado pelo Editor de formulários.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -106,27 +107,40 @@ public class Relatorio extends javax.swing.JInternalFrame{
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
         String var;
-        for(int i = 0; i < bd.buscarFluxoDeCaixa().size(); i++){
-            if(bd.buscarFluxoDeCaixa().get(i) != null){
-                this.listBuscar.add( bd.buscarFluxoDeCaixa().get(i).getID() + "  |  " +  bd.buscarFluxoDeCaixa().get(i).getNome() + "  |  " + bd.buscarFluxoDeCaixa().get(i).getCredito() + "  |  " +
-                        bd.buscarFluxoDeCaixa().get(i).getDebito() + "  |  " +  bd.buscarFluxoDeCaixa().get(i).getData());
+        for (int i = 0; i < bd.buscarFluxoDeCaixa().size(); i++) {
+            if (bd.buscarFluxoDeCaixa().get(i) != null) {
+                this.listBuscar.add(bd.buscarFluxoDeCaixa().get(i).getID() + "  |  " + bd.buscarFluxoDeCaixa().get(i).getNome() + "  |  " + bd.buscarFluxoDeCaixa().get(i).getCredito() + "  |  "
+                        + bd.buscarFluxoDeCaixa().get(i).getDebito() + "  |  " + bd.buscarFluxoDeCaixa().get(i).getData());
             }
         }
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         // TODO adtxtCustoling code here:
+        boolean grava = true, idb = true;
         int id = 0;
-        try{
+        try {
             id = Integer.parseInt(this.txtID.getText());
-            
-            file.WriteFile(bd.buscarFluxoDeCaixaID(id).get(0).getNome() + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getNome()+ "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getCredito()
-            + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getDebito()+ "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getData());
-        }catch(NumberFormatException e){
+            idb = true;
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e + "\nEntre com um valor válido para o ID");
-        } catch (IOException ex) {
-            Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
-             JOptionPane.showMessageDialog(null, "Erro: " + ex);
+            idb = false;
+        }
+
+        while (grava == true && idb == true) {
+            try {
+                file.WriteFile(bd.buscarFluxoDeCaixaID(id).get(0).getID() + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getNome() + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getCredito()
+                        + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getDebito() + "  |  " + bd.buscarFluxoDeCaixaID(id).get(0).getData());
+                grava = false;
+            } catch (IOException ex) {
+                try {
+                    //Logger.getLogger(FluxoDeCaixa.class.getName()).log(Level.SEVERE, null, ex);
+                    this.file = new Arquivo();
+                } catch (FileNotFoundException ex1) {
+                    Logger.getLogger(FluxoDeCaixa.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+                grava = true;
+            }
         }
     }//GEN-LAST:event_btnGerarActionPerformed
 

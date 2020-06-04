@@ -1048,6 +1048,7 @@ public class BancoDeDados {
             while (rs.next()) {
                 FluxoCaixa fluxo = new FluxoCaixa(rs.getString("nome"), rs.getFloat("credito"), rs.getFloat("debito"), rs.getString("data"));
                 listaDeFluxo.add(fluxo);
+                fluxo.setID(rs.getString("ID"));
             }
             sucesso = true;
         } catch (SQLException ex) {
